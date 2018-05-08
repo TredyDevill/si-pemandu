@@ -14,19 +14,22 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::group(['middleware' => 'auth'], function () {
-    //    Route::get('/link1', function ()    {
-//        // Uses Auth Middleware
-//    });
-
-    //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
-    #adminlte_routes
-});
+Auth::routes();
+Route::get('/home', 'HomeController@index');
+  Route::prefix('admin')->group(function() {
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+    Route::get('/', 'AdminController@index')->name('admin.dashboard');
+    Route::get('/maps', 'MapsAdminController@index');
+    Route::get('/laporanbayi', 'LaporanBayiAdminController@index');
+    Route::get('/laporanbalita', 'LaporanBalitaAdminController@index');
+    Route::get('/pendaftaran', 'DaftarAdminController@index');
+  });
 
 Route::get('/maps', 'MapsController@index');
 // Route::get('/petugas', 'PetugasController@index');
 Route::resource('petugas', 'PetugasController');
 Route::get('/laporanbayi', 'LapBayiController@index');
 Route::get('/laporanbalita', 'LapBalitaController@index');
+Route::get('/pendaftaran', 'DaftarController@index');
 // Route::get('/tambahpetugas', 'TambahpetugasController@index');

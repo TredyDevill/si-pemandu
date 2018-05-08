@@ -34,19 +34,19 @@
             <li class="header">MENU</li>
             <!-- Optionally, you can add icons to the links -->
               <li class="treeview">
-              <a href="/home">
+              <a href="/admin">
                 <i class="fa fa-bar-chart"></i> <span>Grafik</span></i>
               </a>
               </li>
 
               <li class="treeview">
-              <a href="/maps">
+              <a href="/admin/maps">
                 <i class="fa fa-map-o"></i> <span>Pemetaan</span></i>
               </a>
               </li>
 
               <li class="treeview">
-              <a href="/petugas">
+              <a href="#">
                 <i class="fa fa-male"></i> <span>Petugas</span></i>
               </a>
 <!--                 <ul class="treeview-menu">
@@ -60,9 +60,9 @@
                 <i class="fa fa-file"></i> <span>Laporan</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
                 <ul class="treeview-menu">
-                  <li><a href="/laporanbayi"><i class="fa fa-circle-o"></i> Laporan Bayi </a></li>
-                  <li><a href="/laporanbalita"><i class="fa fa-circle-o"></i> Laporan Balita</a></li>
-                  <li><a href="/pendaftaran"><i class="fa fa-circle-o"></i> Data Pendaftaran</a></li>
+                  <li><a href="/admin/laporanbayi"><i class="fa fa-circle-o"></i> Laporan Bayi </a></li>
+                  <li><a href="/admin/laporanbalita"><i class="fa fa-circle-o"></i> Laporan Balita</a></li>
+                  <li><a href="/admin/pendaftaran"><i class="fa fa-circle-o"></i> Data Pendaftaran</a></li>
                   <li><a href="#"><i class="fa fa-circle-o"></i> Data Sasaran </a></li>
                 </ul>
               </li>

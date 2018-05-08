@@ -24,9 +24,9 @@
         @endif
 
         <div class="login-box-body" style="border:2px solid black; padding: 30px; margin:-10px;">
-        <p class="login-box-msg"> Selamat Datang Kader di Dashboard SI-PEMANDU Depok </p>
-        <center><img src="img/logo.png" width="100" height="100"></center><br>
-        <form action="{{ url('/login') }}" method="post">
+        <p class="login-box-msg"> Selamat Datang Admin di Dashboard SI-PEMANDU Depok </p>
+        <center><img src="{{ asset("img/logo.png")}}" width="100" height="100"></center><br>
+        <form action="{{ url('/admin/login') }}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group has-feedback">
                 <input type="email" class="form-control" placeholder="{{ trans('adminlte_lang::message.email') }}" name="email"/>
