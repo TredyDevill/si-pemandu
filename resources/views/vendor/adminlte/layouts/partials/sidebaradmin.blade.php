@@ -46,7 +46,7 @@
               </li>
 
               <li class="treeview">
-              <a href="#">
+              <a href="/admin/petugas">
                 <i class="fa fa-male"></i> <span>Petugas</span></i>
               </a>
 <!--                 <ul class="treeview-menu">

@@ -57,6 +57,20 @@
 
               <li class="treeview">
               <a href="#">
+                <i class="fa fa-file-text"></i> <span>Data Kesehatan</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+                <ul class="treeview-menu">
+                  <li><a href="/datakms"><i class="fa fa-circle-o"></i> Data KMS </a></li>
+                  <li><a href="/datakbbl"><i class="fa fa-circle-o"></i> Data KBBL</a></li>
+                  <!-- <li><a href="/datagizi"><i class="fa fa-circle-o"></i> Data Gizi</a></li> -->
+                  <li><a href="/dataimunisasi"><i class="fa fa-circle-o"></i> Data Imunisasi </a></li>
+                  <li><a href="/datavitamina"><i class="fa fa-circle-o"></i> Data Pemberian Vitamin A</a></li>
+                  <li><a href="/datakesehatananak"><i class="fa fa-circle-o"></i> Data Kesehatan Anak</a></li>
+                </ul>
+              </li>
+
+              <li class="treeview">
+              <a href="#">
                 <i class="fa fa-file"></i> <span>Laporan</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
                 <ul class="treeview-menu">

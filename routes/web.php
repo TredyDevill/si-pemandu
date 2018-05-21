@@ -24,6 +24,7 @@ Route::get('/home', 'HomeController@index');
     Route::get('/laporanbayi', 'LaporanBayiAdminController@index');
     Route::get('/laporanbalita', 'LaporanBalitaAdminController@index');
     Route::get('/pendaftaran', 'DaftarAdminController@index');
+    Route::resource('petugas', 'AdmPetugasController');
   });
 
 Route::get('/maps', 'MapsController@index');
@@ -32,4 +33,9 @@ Route::resource('petugas', 'PetugasController');
 Route::get('/laporanbayi', 'LapBayiController@index');
 Route::get('/laporanbalita', 'LapBalitaController@index');
 Route::get('/pendaftaran', 'DaftarController@index');
-// Route::get('/tambahpetugas', 'TambahpetugasController@index');
+Route::get('/datakms', 'KmsController@index');
+Route::get('/datakbbl', 'KbblController@index');
+Route::get('/datagizi', 'GiziController@index');
+Route::get('/dataimunisasi', 'ImunisasiController@index');
+Route::get('/datavitamina', 'VitaminController@index');
+Route::get('/datakesehatananak', 'KesehatanController@index');

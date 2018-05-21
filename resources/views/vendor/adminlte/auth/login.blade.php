@@ -24,8 +24,8 @@
         @endif
 
         <div class="login-box-body" style="border:2px solid black; padding: 30px; margin:-10px;">
-        <p class="login-box-msg"> Selamat Datang Kader di Dashboard SI-PEMANDU Depok </p>
-        <center><img src="img/logo.png" width="100" height="100"></center><br>
+        <p class="login-box-msg"> Selamat Datang Admin Posyandu di Dashboard SI-PEMANDU Depok </p>
+        <center><img src="{{ asset("img/logo.png") }}" width="100" height="100"></center><br>
         <form action="{{ url('/login') }}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group has-feedback">
@@ -43,6 +43,7 @@
                             <input type="checkbox" name="remember"> {{ trans('adminlte_lang::message.remember') }}
                         </label>
                     </div>
+                    <label>Anda Admin Pusat?<a href="/admin"> Login</a> </label>
                 </div><!-- /.col -->
                 <div class="col-xs-4">
                     <button type="submit" class="btn btn-primary btn-block btn-flat">Masuk</button>

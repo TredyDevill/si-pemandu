@@ -10,7 +10,7 @@
     <div id="app">
         <div class="register-box">
             <div class="register-logo">
-                <a href="{{ url('/home') }}"><b>Admin</b>LTE</a>
+                <a href="{{ url('/home') }}"><b>Si Pemandu</b>Depok</a>
             </div>
 
             @if (count($errors) > 0)
@@ -25,7 +25,7 @@
             @endif
 
             <div class="register-box-body">
-                <p class="login-box-msg">{{ trans('adminlte_lang::message.registermember') }}</p>
+                <p class="login-box-msg">Daftar Admin Posyandu</p>
                 <form action="{{ url('/register') }}" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group has-feedback">
@@ -64,8 +64,6 @@
                         </div><!-- /.col -->
                     </div>
                 </form>
-
-                @include('adminlte::auth.partials.social_login')
 
                 <a href="{{ url('/login') }}" class="text-center">{{ trans('adminlte_lang::message.membreship') }}</a>
             </div><!-- /.form-box -->

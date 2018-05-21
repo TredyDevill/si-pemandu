@@ -170,27 +170,75 @@ $(document).ready(function() {
 $(function(){
     var color = Chart.helpers.color;
         var sehatChartData = {
-            labels: ["Januari", "Februari", "Maret", "April"],
+            labels: ["Balita", "Bayi"],
              datasets: [{
                 label: 'Balita',
                 backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
                 borderColor: window.chartColors.red,
                 borderWidth: 1,
-                data: [13, 20, 27, 30]
+                data: [21, 0]
              }, {
                 label: 'Bayi',
                 backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
                 borderColor: window.chartColors.green,
                 borderWidth: 1,
-                data: [9, 11, 17, 25]
+                data: [0, 27]
                 }]
              };
 
             $('#canvassehat').SiPemanduCharts({
                 type        : 'bar',
                 chartData   : sehatChartData,
-                titleText   : 'Kesehatan Balita & Bayi',
+                titleText   : 'Total Balita & Bayi',
                 ketId       : 'sehat'
+            });
+
+            var giziChartData = {
+            labels: ["Gizi Buruk", "Gizi Kurang", "Gizi Baik", "Gizi Lebih"],
+             datasets: [{
+                label: 'Balita',
+                backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                borderColor: window.chartColors.red,
+                borderWidth: 1,
+                data: [5, 6, 7, 3, 0]
+             }, {
+                label: 'Bayi',
+                backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                borderColor: window.chartColors.green,
+                borderWidth: 1,
+                data: [3, 6, 11, 7, 0]
+                }]
+             };
+
+            $('#canvasgizi').SiPemanduCharts({
+                type        : 'bar',
+                chartData   : giziChartData,
+                titleText   : 'Status Gizi Bayi dan Balita',
+                ketId       : 'gizi'
+            });
+
+            var beratChartData = {
+            labels: ["Sangat Kurus", "Kurus", "Normal", "Gemuk"],
+             datasets: [{
+                label: 'Balita',
+                backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                borderColor: window.chartColors.red,
+                borderWidth: 1,
+                data: [5, 6, 7, 3, 0]
+             }, {
+                label: 'Bayi',
+                backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                borderColor: window.chartColors.green,
+                borderWidth: 1,
+                data: [3, 6, 11, 7, 0]
+                }]
+             };
+
+            $('#canvasberat').SiPemanduCharts({
+                type        : 'bar',
+                chartData   : beratChartData,
+                titleText   : 'Tingkat Berat Badan Bayi dan Balita',
+                ketId       : 'berat'
             });
 
         });

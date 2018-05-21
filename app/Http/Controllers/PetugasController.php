@@ -57,18 +57,6 @@ class PetugasController extends Controller
 
     public function update(Request $request, $id_kader)
     {
-        // $kaders = Blog::find($id_kader);
-        // $kaders->nama_admin = $request->nama_admin;
-        // $kaders->username = $request->username;
-        // $kaders->password = $request->password;
-        // $kaders->email = $request->email;
-        // $kaders->no_hp = $request->no_hp;
-        // $kaders->bio = $request->bio;
-        // $kaders->alamat = $request->alamat;
-        // $kaders->tgl_lahir = $request->tgl_lahir;
-        // $kaders->tgl_join = $request->tgl_join;
-        // $kaders->save();
-        // return redirect('/petugas')->with('success', 'Data kader berhasil diubah!');
         $this->validate($request, [
             'nama_admin'    =>  'required',
             'username'      =>  'required',
