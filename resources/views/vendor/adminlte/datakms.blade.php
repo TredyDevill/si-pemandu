@@ -31,44 +31,30 @@
                 </tr>
                 </thead>
                 <tbody>
+                <?php
+                $i = 0;
+                ?>
+            @foreach($kmz as $kms)
                 <tr>
-                  <td>1</td>
-                  <td>Bro</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td>2</td>
-                  <td> 4</td>
-                  <td> 4</td>
-                  <td>Trident</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td> 4</td>
-                  <td>Trident</td>
+                  <td>{{++$i}}</td>
+                  <td>{{ $kms->nama_anak }}</td>
+                  <td>{{ $kms->nama_ayah }}</td>
+                  <td>{{ $kms->nama_ibu }}</td>
+                  <td>{{ $kms->ttl }}</td>
+                  <td>{{ $kms->umur }}</td>
+                  <td>{{ $kms->bb }}</td>
+                  <td>{{ $kms->tinggi }}</td>
+                  <td>{{ $kms->status_asi }}</td>
+                  <td>{{ $kms->bln_penimbangan }}</td>
+                  <td>{{ $kms->status_bb }}</td>
+                  <td>{{ $kms->kesimpulan_kms }}</td>
                   <td style="white-space: nowrap;" align="center"> 
                     <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" data-target="#modal-lihat"><i class="fa fa-eye"></i></button>
                     <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-success" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil-square-o"></i></button>
                     <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#modal-hapus"><i class="fa fa-remove"></i></button>
                   </td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>superman</td>
-                  <td>super</td>
-                  <td>man</td>
-                  <td> 4</td>
-                  <td>10</td>
-                  <td> 4</td>
-                  <td>Trident</td>
-                  <td>super</td>
-                  <td>man</td>
-                  <td> 4</td>
-                  <td>Trident</td>
-                  <td style="white-space: nowrap;" align="center"> 
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" data-target="#modal-lihat"><i class="fa fa-eye"></i></button>
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-success" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil-square-o"></i></button>
-                    <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#modal-hapus"><i class="fa fa-remove"></i></button>
-                  </td>
-                </tr>
+            @endforeach
                 </tbody>
               </table>
     </div>
