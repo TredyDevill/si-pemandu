@@ -28,10 +28,9 @@
 					<div class="box-body border-radius-none">
 						<div class="tab-content">
 							<div class="tab-pane active" id="sehat">
-								<b>Total Bayi Dan Balita</b>
 								<div class="line-height-box-body"></div>
 								<div class="col-md-8">
-									<canvas id="canvassehat" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
+									<canvas id="pie-chart" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
 								</div>
 								<div class="col-md-4 bg-aqua-active box-keterangan">
 									<p class="text-center">
@@ -40,9 +39,20 @@
 									</p>
 									<div class="progress-group">
 										<span class="progress-text">Total Keseluruhan</span>
-										<span class="progress-number"><b>48</b></span>
+										<span class="progress-number"><b>{{$totaljml[0] + $totaljml[1]}}</b></span>
 									</div>
 								</div>
+								<div class="col-md-4 bg-white-active box-keterangan">
+									<div class="progress-group">
+										<span class="progress-text">Bayi</span>
+										<span class="progress-number"><b>{{$totaljml[0]}}</b></span>
+									</div>
+									<div class="progress-group">
+										<span class="progress-text">Balita</span>
+										<span class="progress-number"><b>{{$totaljml[1]}}</b></span>
+									</div>
+								</div>
+
 
 								<div class="col-md-4 box-detail-keterangan">
 									<div class="progress-group">
@@ -51,10 +61,9 @@
 							</div>
 
 							<div class="tab-pane" id="gizi">
-								<b>Status Gizi Bayi dan Balita</b>
 								<div class="line-height-box-body"></div>
 								<div class="col-md-8">
-									<canvas id="canvasgizi" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
+									<canvas id="bar-chart-grouped" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
 								</div>
 								<div class="col-md-4 bg-aqua-active box-keterangan">
 									<p class="text-center">
@@ -63,7 +72,29 @@
 									</p>
 									<div class="progress-group">
 										<span class="progress-text">Total Keseluruhan</span>
-										<span class="progress-number"><b>48</b></span>
+										<span class="progress-number"><b>{{$gizijml[0] + $gizijml[1] + $gizijml[2] + $gizijml[3] + $gizibalitajml[0] + $gizibalitajml[1] + $gizibalitajml[2] + $gizibalitajml[3]}}</b></span>
+									</div>
+								</div>
+								<div class="col-md-4 bg-white-active box-keterangan">
+									<div class="progress-group">
+										<span class="progress-text">Gizi Buruk</span>
+										<span class="progress-number" style="background-color: #B22222"><b>{{$gizibalitajml[0]}}</b></span>
+										<span class="progress-number" style="background-color: #3e95cd"><b>{{$gizijml[0]}}</b></span>
+									</div>
+									<div class="progress-group">
+										<span class="progress-text">Gizi Kurang</span>
+										<span class="progress-number" style="background-color: #B22222"><b>{{$gizibalitajml[1]}}</b></span>
+										<span class="progress-number" style="background-color: #3e95cd"><b>{{$gizijml[1]}}</b></span>
+									</div>
+									<div class="progress-group">
+										<span class="progress-text">Gizi Baik</span>
+										<span class="progress-number" style="background-color: #B22222"><b>{{$gizibalitajml[2]}}</b></span>
+										<span class="progress-number" style="background-color: #3e95cd"><b>{{$gizijml[2]}}</b></span>
+									</div>
+									<div class="progress-group">
+										<span class="progress-text">Gizi Lebih</span>
+										<span class="progress-number" style="background-color: #B22222"><b>{{$gizibalitajml[3]}}</b></span>
+										<span class="progress-number" style="background-color: #3e95cd"><b>{{$gizijml[3]}}</b></span>
 									</div>
 								</div>
 
@@ -74,10 +105,9 @@
 							</div>
 
 							<div class="tab-pane" id="berat">
-								<b>Tingkat Berat Badan Bayi dan Balita</b>
 								<div class="line-height-box-body"></div>
 								<div class="col-md-8">
-									<canvas id="canvasberat" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
+									<canvas id="bar2-chart-grouped" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
 								</div>
 								<div class="col-md-4 bg-aqua-active box-keterangan">
 									<p class="text-center">
@@ -87,6 +117,28 @@
 									<div class="progress-group">
 										<span class="progress-text">Total Keseluruhan</span>
 										<span class="progress-number"><b>48</b></span>
+									</div>
+								</div>
+								<div class="col-md-4 bg-white-active box-keterangan">
+									<div class="progress-group">
+										<span class="progress-text">Sangat Kurus</span>
+										<span class="progress-number" style="background-color: #B22222"><b>3</b></span>
+										<span class="progress-number" style="background-color: #3e95cd"><b>5</b></span>
+									</div>
+									<div class="progress-group">
+										<span class="progress-text">Kurus</span>
+										<span class="progress-number" style="background-color: #B22222"><b>6</b></span>
+										<span class="progress-number" style="background-color: #3e95cd"><b>6</b></span>
+									</div>
+									<div class="progress-group">
+										<span class="progress-text">Normal</span>
+										<span class="progress-number" style="background-color: #B22222"><b>11</b></span>
+										<span class="progress-number" style="background-color: #3e95cd"><b>7</b></span>
+									</div>
+									<div class="progress-group">
+										<span class="progress-text">Gemuk</span>
+										<span class="progress-number" style="background-color: #B22222"><b>7</b></span>
+										<span class="progress-number" style="background-color: #3e95cd"><b>3</b></span>
 									</div>
 								</div>
 

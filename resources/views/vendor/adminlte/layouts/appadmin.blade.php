@@ -11,6 +11,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 
 <style type="text/css">
@@ -58,9 +61,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     overflow-y: auto;
   }
   #map {
-    height: 520px;
+    height: 563px;
     width: 100%;
     background: grey;
+    position: absolute;
         }
   .w3-check {
     width: 15px;
@@ -68,9 +72,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   }
   .responsive {
     top: 100%; 
-    right: 1%; 
-    width:500px;
-    height:560px;
+    left: 73%; 
+    width:300px;
+    height:450px;
     white-space: nowrap; 
     border: 1px #4083c0 solid; 
     font-size: 13.6px!important;
@@ -120,13 +124,7 @@ desired effect
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
-        @include('adminlte::layouts.partials.contentheader')
-
-        <!-- Main content -->
-        <section class="content">
-            <!-- Your Page Content Here -->
             @yield('main-content')
-        </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 
     @include('adminlte::layouts.partials.controlsidebar')

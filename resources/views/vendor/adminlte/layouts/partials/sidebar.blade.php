@@ -77,7 +77,7 @@
                   <li><a href="/laporanbayi"><i class="fa fa-circle-o"></i> Laporan Bayi </a></li>
                   <li><a href="/laporanbalita"><i class="fa fa-circle-o"></i> Laporan Balita</a></li>
                   <li><a href="/pendaftaran"><i class="fa fa-circle-o"></i> Data Pendaftaran</a></li>
-                  <li><a href="#"><i class="fa fa-circle-o"></i> Data Sasaran </a></li>
+                  <li><a href="/datasasaran"><i class="fa fa-circle-o"></i> Data Sasaran </a></li>
                 </ul>
               </li>
         </ul><!-- /.sidebar-menu -->

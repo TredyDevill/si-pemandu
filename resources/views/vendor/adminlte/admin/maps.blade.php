@@ -7,19 +7,36 @@
 
 @section('main-content')
 
-<div class="w3-top">
-  <div class="w3-bar">
-    <div class="w3-right w3-padding-16" style="margin-right:0.5em;letter-spacing:1px">
-      <div class="w3-bar-item w3-large">
-        <button class="w3-btn float-btn w3-circle w3-green w3-text-white" id="all" onclick="hapus()"><i class="fa fa-refresh w3-hover-opacity"></i></button>
-        <button onclick="dropdown()" class="w3-btn float-btn w3-circle w3-blue-gray w3-text-white"><i class="fa fa-bars w3-hover-opacity"></i></button>
-        <a href="/"><button class="w3-btn float-btn w3-circle w3-orange w3-text-white"><i class="fa fa-home w3-hover-opacity"></i></button></a>
-      </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAtFnKBeTAorl8rWoo066pk7pwimSpA-w"></script>
+<div id="map"></div>
+<div class="w3-bar" style="position: relative;">
+  <div class="w3-right w3-padding-16" style="margin-right:0.5em;letter-spacing:1px">
+    <div class="w3-bar-item w3-large">
+      <button class="w3-btn float-btn w3-circle w3-green w3-text-white" id="all" onclick="hapus()"><i class="fa fa-refresh w3-hover-opacity"></i></button>
+      <button onclick="dropdown()" class="w3-btn float-btn w3-circle w3-blue-gray w3-text-white"><i class="fa fa-bars w3-hover-opacity"></i></button>
     </div>
   </div>
 </div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAtFnKBeTAorl8rWoo066pk7pwimSpA-w"></script>
-<div id="map"></div>
+
+<div id="dropdown1" class="responsive scrollbar style-7 w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom"  style="position: relative;">
+  <div class="w3-bar">
+    <a id="myBtn" onclick="myFunc('Demo1')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em; text-decoration: none;"><i class="fa fa-heartbeat w3-medium" style="margin-right: 7px;"></i> Bayi </a>
+      <div id="Demo1" class="w3-hide w3-animate-left w3-text-gray" style="padding: 5px 2em 1em; border-bottom: 1px solid #ccc;">
+        <input type="checkbox" class="checkbox" id="ap" onclick="apotik()"> Gizi Buruk <br>
+        <input type="checkbox" class="checkbox" id="kli" onclick="nik()"> Gizi Kurang <br>
+        <input type="checkbox" class="checkbox" id="rs" onclick="sakit()"> Gizi Baik <br>
+        <input type="checkbox" class="checkbox" id="pks" onclick="kesmas()"> Gizi Lebih <br>
+      </div>
+    <a id="myBtn" onclick="myFunc('Demo2')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em; text-decoration: none;"><i class="fa fa-heartbeat w3-medium" style="margin-right: 7px;"></i> Balita </a>
+      <div id="Demo2" class="w3-hide w3-animate-left w3-text-gray" style="padding: 5px 2em 1em; border-bottom: 1px solid #ccc;">
+        <input type="checkbox" class="checkbox" id="ap" onclick="apotik()"> Gizi Buruk <br>
+        <input type="checkbox" class="checkbox" id="kli" onclick="nik()"> Gizi Kurang <br>
+        <input type="checkbox" class="checkbox" id="rs" onclick="sakit()"> Gizi Baik <br>
+        <input type="checkbox" class="checkbox" id="pks" onclick="kesmas()"> Gizi Lebih <br>
+      </div>
+  </div>
+</div>
 
 <script>
     var layer_7;
@@ -27,7 +44,7 @@
         // Create a map object and specify the DOM element for display.
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -6.3973829, lng: 106.8126366},
-          zoom: 12
+          zoom: 13
         });
         var style = [
         {
@@ -402,6 +419,41 @@
       layer_7.setMap(map); 
       }
       google.maps.event.addDomListener(window, 'load', initMap);
-    </script>
+</script>
+<script>
+function dropdown() {
+    var x = document.getElementById("dropdown1");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+<script>
+var openInbox = document.getElementById("myBtn");
+openInbox.click();
+
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+function myFunc(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-border-bottom";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className =
+        x.previousElementSibling.className.replace(" w3-border-bottom", "");
+    }
+}
+</script>
 
 @endsection

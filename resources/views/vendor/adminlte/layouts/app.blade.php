@@ -11,9 +11,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 <style type="text/css">
+  /*@font-face {
+    font-family: "Brandon_Grotesque_bold";
+    src: url(../../../../assets/font/Brandon_blk.otf);}
+
+  @font-face {
+    font-family: "Brandon_Grotesque_reg";
+    src: url(../../../../assets/font/Brandon_reg.otf);}
+
+  .f_bold {
+    font-family: "Brandon_Grotesque_bold";
+  }*/
   .checkbox {
     position: relative;
     margin: 0 10px 0 0;
@@ -58,19 +72,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
     overflow-y: auto;
   }
   #map {
-    height: 520px;
+    height: 563px;
     width: 100%;
     background: grey;
-        }
+    position: absolute;
+  }
   .w3-check {
     width: 15px;
     height: 18px;
   }
   .responsive {
     top: 100%; 
-    right: 1%; 
-    width:500px;
-    height:560px;
+    left: 73%; 
+    width:300px;
+    height:450px;
     white-space: nowrap; 
     border: 1px #4083c0 solid; 
     font-size: 13.6px!important;
@@ -120,13 +135,8 @@ desired effect
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
-        @include('adminlte::layouts.partials.contentheader')
-
-        <!-- Main content -->
-        <section class="content">
             <!-- Your Page Content Here -->
             @yield('main-content')
-        </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 
     @include('adminlte::layouts.partials.controlsidebar')
@@ -165,85 +175,127 @@ $(document).ready(function() {
     } );
 } );
 </script>
-
+@if(Route::currentRouteName() == 'grafik')
 <script type="text/javascript">
-$(function(){
-    var color = Chart.helpers.color;
-        var sehatChartData = {
-            labels: ["Balita", "Bayi"],
-             datasets: [{
-                label: 'Balita',
-                backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                borderColor: window.chartColors.red,
-                borderWidth: 1,
-                data: [21, 0]
-             }, {
-                label: 'Bayi',
-                backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                borderColor: window.chartColors.green,
-                borderWidth: 1,
-                data: [0, 27]
-                }]
-             };
 
-            $('#canvassehat').SiPemanduCharts({
-                type        : 'bar',
-                chartData   : sehatChartData,
-                titleText   : 'Total Balita & Bayi',
-                ketId       : 'sehat'
-            });
+new Chart(document.getElementById("pie-chart"), {
+    type: 'pie',
+    data: {
+      labels: ["Bayi", "Balita"],
+      datasets: [{
+        label: "Total",
+        backgroundColor: ["#3e95cd", "#B22222"],
+        data: <?php echo json_encode($totaljml); ?>
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Total Bayi & Balita'
+      }
+    }
+});
 
-            var giziChartData = {
-            labels: ["Gizi Buruk", "Gizi Kurang", "Gizi Baik", "Gizi Lebih"],
-             datasets: [{
-                label: 'Balita',
-                backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                borderColor: window.chartColors.red,
-                borderWidth: 1,
-                data: [5, 6, 7, 3, 0]
-             }, {
-                label: 'Bayi',
-                backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                borderColor: window.chartColors.green,
-                borderWidth: 1,
-                data: [3, 6, 11, 7, 0]
-                }]
-             };
+new Chart(document.getElementById("bar-chart-grouped"), {
+    type: 'bar',
+    data: {
+      labels: ["Gizi Buruk", "Gizi Kurang", "Gizi Baik", "Gizi Lebih"],
+      datasets: [
+        {
+          label: "Bayi",
+          backgroundColor: "#3e95cd",
+          data: <?php echo json_encode($gizijml); ?>
+        }, {
+          label: "Balita",
+          backgroundColor: "#B22222",
+          data: <?php echo json_encode($gizibalitajml); ?>
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Status Gizi Bayi dan Balita  '
+      }
+    }
+});
 
-            $('#canvasgizi').SiPemanduCharts({
-                type        : 'bar',
-                chartData   : giziChartData,
-                titleText   : 'Status Gizi Bayi dan Balita',
-                ketId       : 'gizi'
-            });
+new Chart(document.getElementById("bar2-chart-grouped"), {
+    type: 'bar',
+    data: {
+      labels: ["Sangat Kurus", "Kurus", "Normal", "Gemuk"],
+      datasets: [
+        {
+          label: "Bayi",
+          backgroundColor: "#3e95cd",
+          data: [5, 6, 7, 3, 0]
+        }, {
+          label: "Balita",
+          backgroundColor: "#B22222",
+          data: [3, 6, 11, 7, 0]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Tingkat Berat Badan Bayi dan Balita'
+      }
+    }
+});
+// $(function(){
+// var color = Chart.helpers.color;    
+// var giziChartData = {
+//             labels: ["Gizi Buruk", "Gizi Kurang", "Gizi Baik", "Gizi Lebih"],
+//              datasets: [{
+//                 label: 'Balita',
+//                 backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+//                 borderColor: window.chartColors.red,
+//                 borderWidth: 1,
+//                 data: [5, 6, 7, 3, 0]
+//              }, {
+//                 label: 'Bayi',
+//                 backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+//                 borderColor: window.chartColors.green,
+//                 borderWidth: 1,
+//                 data: [3, 6, 11, 7, 0]
+//                 }]
+//              };
 
-            var beratChartData = {
-            labels: ["Sangat Kurus", "Kurus", "Normal", "Gemuk"],
-             datasets: [{
-                label: 'Balita',
-                backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                borderColor: window.chartColors.red,
-                borderWidth: 1,
-                data: [5, 6, 7, 3, 0]
-             }, {
-                label: 'Bayi',
-                backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                borderColor: window.chartColors.green,
-                borderWidth: 1,
-                data: [3, 6, 11, 7, 0]
-                }]
-             };
+//             $('#canvasgizi').SiPemanduCharts({
+//                 type        : 'bar',
+//                 chartData   : giziChartData,
+//                 titleText   : 'Status Gizi Bayi dan Balita',
+//                 ketId       : 'gizi'
+//             });
 
-            $('#canvasberat').SiPemanduCharts({
-                type        : 'bar',
-                chartData   : beratChartData,
-                titleText   : 'Tingkat Berat Badan Bayi dan Balita',
-                ketId       : 'berat'
-            });
+//             var beratChartData = {
+//             labels: ["Sangat Kurus", "Kurus", "Normal", "Gemuk"],
+//              datasets: [{
+//                 label: 'Balita',
+//                 backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+//                 borderColor: window.chartColors.red,
+//                 borderWidth: 1,
+//                 data: [5, 6, 7, 3, 0]
+//              }, {
+//                 label: 'Bayi',
+//                 backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+//                 borderColor: window.chartColors.green,
+//                 borderWidth: 1,
+//                 data: [3, 6, 11, 7, 0]
+//                 }]
+//              };
 
-        });
+//             $('#canvasberat').SiPemanduCharts({
+//                 type        : 'bar',
+//                 chartData   : beratChartData,
+//                 titleText   : 'Tingkat Berat Badan Bayi dan Balita',
+//                 ketId       : 'berat'
+//             });
+// });
 
 </script>
+@endif
 <script>
 function dropdown() {
     var x = document.getElementById("dropdown1");

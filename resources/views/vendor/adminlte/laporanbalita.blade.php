@@ -20,70 +20,37 @@
                   <th>Tgl. Lahir</th>
                   <th>Nama Ayah</th>
                   <th>Nama Ibu</th>
-                  <th>KLP Dasa Wisma</th>
-                  <th>Penimbangan Januari</th>
-                  <th>Penimbangan Februari</th>
-                  <th>Penimbangan Maret</th>
-                  <th>Penimbangan April</th>
                   <th>Penimbangan Mei</th>
                   <th>Penimbangan Juni</th>
-                  <th>Penimbangan Juli</th>
-                  <th>Penimbangan Agustus</th>
-                  <th>Penimbangan September</th>
-                  <th>Penimbangan Oktober</th>
-                  <th>Penimbangan November</th>
-                  <th>Penimbangan Desember</th>
                   <th>Sirup Besi FE I Bln</th>
                   <th>Sirup Besi FE II Bln</th>
                   <th>VIT.A I Bln</th>
                   <th>VIT.A II Bln</th>
                   <th>PMT Pemulihan</th>
                   <th>Oralit</th>
-                  <th>Ket</th>
-                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
+                <?php
+                $i = 0;
+                ?>
+            @foreach($arrimun as $lapbal)
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td> 4</td>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td> 4</td>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td> 4</td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td>qwqwqw</td>
-                  <td> 4</td>
-                  <td style="white-space: nowrap;" align="center"> 
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" data-target="#modal-lihat"><i class="fa fa-eye"></i></button>
-
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-success" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil-square-o"></i></button>
-
-                    <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#modal-hapus"><i class="fa fa-remove"></i></button>
-                  </td>
+                  <td>{{++$i}}</td>
+                  <td>{{ $lapbal->nama_anak }}</td>
+                  <td>{{ $lapbal->ttl }}</td>
+                  <td>{{ $lapbal->nama_ayah }}</td>
+                  <td>{{ $lapbal->nama_ibu }}</td>
+                  <td>{{ $lapbal->mei }}</td>
+                  <td>{{ $lapbal->juni }}</td>
+                  <td>{{ $lapbal->sb_i }}</td>
+                  <td>{{ $lapbal->sb_ii }}</td>
+                  <td>{{ $lapbal->vita_i }}</td>
+                  <td>{{ $lapbal->vita_ii }}</td>
+                  <td>{{ $lapbal->pmt }}</td>
+                  <td>{{ $lapbal->oralit }}</td>
                 </tr>
+            @endforeach
                 </tbody>
               </table>
     </div>

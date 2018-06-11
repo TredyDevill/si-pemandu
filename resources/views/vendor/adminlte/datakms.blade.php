@@ -48,10 +48,9 @@
                   <td>{{ $kms->bln_penimbangan }}</td>
                   <td>{{ $kms->status_bb }}</td>
                   <td>{{ $kms->kesimpulan_kms }}</td>
-                  <td style="white-space: nowrap;" align="center"> 
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" data-target="#modal-lihat"><i class="fa fa-eye"></i></button>
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-success" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil-square-o"></i></button>
-                    <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#modal-hapus"><i class="fa fa-remove"></i></button>
+                  <td style="white-space: nowrap;" align="center">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-success" data-toggle="modal" data-target="#modal-edit-{{$kms->id_kms}}"><i class="fa fa-pencil-square-o"></i></button>
+                    <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#modal-hapus-{{$kms->id_kms}}"><i class="fa fa-remove"></i></button>
                   </td>
                 </tr>
             @endforeach
@@ -59,121 +58,65 @@
               </table>
     </div>
 </div>
-
-
-
-<!-- <div class="modal fade" id="modal-lihat">
+<!-- ------------------------------------------------------------------------------------------------------------------- -->
+@foreach($kmz as $kms)
+<div class="modal fade" id="modal-edit-{{$kms->id_kms}}">
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header green-background-main-color">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" align="center">Lihat</h4>
-          </div>
-            <div class="modal-body overflow-hidden">
-              <div class="row">
-                <div class="col-xs-12 box-table">
-                  <div class="col-xs-3">
-                    <b>Nama Kader</b>
-                  </div>
-                  <div class="col-xs-9">
-                    Gecko
-                  </div>
-                </div>
-                <div class="col-xs-12 box-table">
-                  <div class="col-xs-3">
-                    <b>Alamat</b>
-                  </div>
-                  <div class="col-xs-9">
-                    Firefox 1.0
-                  </div>
-                </div>
-                <div class="col-xs-12 box-table">
-                  <div class="col-xs-3">
-                    <b>Kelurahan</b>
-                  </div>
-                  <div class="col-xs-9">
-                    Win 98+ / OSX.2+
-                  </div>
-                </div>
-                <div class="col-xs-12 box-table">
-                  <div class="col-xs-3">
-                    <b>Kecamatan</b>
-                  </div>
-                  <div class="col-xs-9">
-                    1.7
-                  </div>
-                </div>
-                <div class="col-xs-12 box-table">
-                  <div class="col-xs-3">
-                    <b>Email</b>
-                  </div>
-                  <div class="col-xs-9">
-                    A
-                  </div>
-                </div>
-                <div class="col-xs-12 box-table">
-                  <div class="col-xs-3">
-                    <b>Tanggal Bergabung</b>
-                  </div>
-                  <div class="col-xs-9">
-                    4
-                  </div>
-                </div>
-              </div>
-            </div>
-      </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modal-edit">
-  <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header green-background-main-color">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" align="center">Ubah Data Kader</h4>
+              <h4 class="modal-title" align="center">Ubah Data KMS {{$kms->nama_anak}}</h4>
           </div>
             <div class="modal-body">
+            {!! Form::open(['action' => ['KmsController@update', $kms->id_kms], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Nama Kader</label>
-                  <input type="text" class="form-control" id="nama">
+                  <label for="exampleInputEmail1">Berat Badan</label>
+                  <input type="text" class="form-control" name="bb" value="{{$kms->bb}}">
                 </div>
                    <div class="form-group">
-                  <label for="exampleInputEmail1">Alamat</label>
-                  <input type="textarea" class="form-control" id="alamat">
+                  <label for="exampleInputEmail1">Tinggi Badan</label>
+                  <input type="textarea" class="form-control" name="tinggi" value="{{$kms->tinggi}}">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Kelurahan</label>
-                  <input type="text" class="form-control" id="kelurahan">
+                  <label for="exampleInputEmail1">Status Asi</label>
+                  <input type="text" class="form-control" name="status_asi" value="{{$kms->status_asi}}">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Kecamatan</label>
-                  <input type="text" class="form-control" id="kecamatan">
+                  <label for="exampleInputEmail1">Bulan Penimbangan</label>
+                  <input type="text" class="form-control" name="bln_penimbangan" value="{{$kms->bln_penimbangan}}">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email</label>
-                  <input type="text" class="form-control" id="email">
+                  <label for="exampleInputEmail1">Status Berat Badan</label>
+                  <input type="text" class="form-control" name="status_bb" value="{{$kms->status_bb}}">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Tanggal Bergabung</label>
+                  <label for="exampleInputEmail1">Tanggal</label>
                   <div class="input-group date">
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input type="text" class="form-control pull-right" id="tanggal" placeholder="01/20/2018">
+                      <input type="text" class="form-control pull-right" name="tgl" value="{{$kms->tgl}}">
                   </div>
                 </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Kesimpulan KMS</label>
+                  <input type="text" class="form-control" name="kesimpulan_kms" value="{{$kms->kesimpulan_kms}}">
+                </div>
                 <div class="modal-footer">
+                {{Form::hidden('_method', 'PUT')}}
                 <button type="submit" class="btn btn-info btn-fill pull-right">Simpan</button>
                 <div class="clearfix"></div>
               </div>
+            {!! Form::close() !!}
             </div>
       </div>
   </div>
 </div>
-
-<div class="modal fade" id="modal-hapus">
+@endforeach
+<!-- ------------------------------------------------------------------------------------------ -->
+@foreach($kmz as $kms)
+<div class="modal fade" id="modal-hapus-{{$kms->id_kms}}">
   <div class="modal-dialog">
       <div class="modal-content">
 
@@ -184,12 +127,13 @@
         </div>
 
         <div class="modal-body">
-          <p>Apakah Anda yakin ingin menghapus Data Kader?</p>
+          <p>Apakah Anda yakin ingin menghapus Data KMS "{{$kms->nama_anak}}"?</p>
         </div>
 
         <div class="modal-footer">
-          <form action="#" method="post">
+          <form action="/datakms/{{$kms->id_kms}}" method="post">
             <input type="submit" class="btn btn-danger" name="submit" value="YA">
+            {{ csrf_field() }}
             <input type="hidden" name="_method" value="DELETE">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Tidak</button>
           </form>
@@ -198,8 +142,8 @@
 
       </div>
   </div>
-</div>  -->
-
+</div> 
+@endforeach
 
 
 

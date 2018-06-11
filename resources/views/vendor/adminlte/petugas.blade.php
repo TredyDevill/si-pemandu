@@ -15,6 +15,7 @@
     	<table id="example" class="display nowrap" style="width:100%">
                 <thead>
                 <tr>
+                  <th>No</th>
                   <th>Nama Kader</th>
                   <th>Alamat</th>
                   <th>Username</th>
@@ -27,8 +28,12 @@
                 </tr>
                 </thead>
                 <tbody>
+                <?php
+                $i = 0;
+                ?>
             @foreach($kaders as $kader)
                 <tr>
+                  <td>{{++$i}}</td>
                   <td>{{ $kader->nama_admin }}</td>
                   <td>{{ $kader->alamat }}</td>
                   <td>{{ $kader->username }}</td>

@@ -22,7 +22,7 @@
                   <th>Tanggal Lahir</th>
                   <th>Umur</th>
                   <th>Berat Badan Lahir</th>
-                  <th>Panjang Badan Lahit</th>
+                  <th>Panjang Badan Lahir</th>
                   <th>Tempat Lahir</th>
                   <th>Cara Persalinan</th>
                   <th>Kesimpulan KBBL</th>
@@ -30,50 +30,37 @@
                 </tr>
                 </thead>
                 <tbody>
+                <?php
+                $i = 0;
+                ?>
+            @foreach($kbbls as $kbbl)
                 <tr>
-                  <td>1</td>
-                  <td>Bro</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td>3</td>
-                  <td> 4</td>
-                  <td> 4</td>
-                  <td>Trident</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td> 4</td>
+                  <td>{{++$i}}</td>
+                  <td>{{ $kbbl->nama_anak }}</td>
+                  <td>{{ $kbbl->nama_ayah }}</td>
+                  <td>{{ $kbbl->nama_ibu }}</td>
+                  <td>{{ $kbbl->ttl }}</td>
+                  <td>{{ $kbbl->umur }}</td>
+                  <td>{{ $kbbl->berat_badan }}</td>
+                  <td>{{ $kbbl->panjang_badan }}</td>
+                  <td>{{ $kbbl->tempat_lahir }}</td>
+                  <td>{{ $kbbl->cara_persalinan }}</td>
+                  <td>{{ $kbbl->kesimpulan_kbbl }}</td>
                   <td style="white-space: nowrap;" align="center"> 
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" data-target="#modal-lihat"><i class="fa fa-eye"></i></button>
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-success" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil-square-o"></i></button>
-                    <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#modal-hapus"><i class="fa fa-remove"></i></button>
+                    <!-- <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" data-target="#modal-lihat-{{$kbbl->id_kbbl}}"><i class="fa fa-eye"></i></button> -->
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-success" data-toggle="modal" data-target="#modal-edit-{{$kbbl->id_kbbl}}"><i class="fa fa-pencil-square-o"></i></button>
+                    <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#modal-hapus-{{$kbbl->id_kbbl}}"><i class="fa fa-remove"></i></button>
                   </td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>superman</td>
-                  <td>super</td>
-                  <td>man</td>
-                  <td> 4</td>
-                  <td>7</td>
-                  <td> 4</td>
-                  <td>Trident</td>
-                  <td>super</td>
-                  <td>man</td>
-                  <td> 4</td>
-                  <td style="white-space: nowrap;" align="center"> 
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" data-target="#modal-lihat"><i class="fa fa-eye"></i></button>
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-success" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil-square-o"></i></button>
-                    <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#modal-hapus"><i class="fa fa-remove"></i></button>
-                  </td>
-                </tr>
+            @endforeach
                 </tbody>
               </table>
     </div>
 </div>
 
 
-
-<!-- <div class="modal fade" id="modal-lihat">
+<!-- @foreach($kbbls as $kbbl)
+<div class="modal fade" id="modal-lihat-{{$kbbl->id_kbbl}}">
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header green-background-main-color">
@@ -85,50 +72,82 @@
               <div class="row">
                 <div class="col-xs-12 box-table">
                   <div class="col-xs-3">
-                    <b>Nama Kader</b>
+                    <b>Nama Anak</b>
                   </div>
                   <div class="col-xs-9">
-                    Gecko
+                    {{$kbbl->nama_anak}}
                   </div>
                 </div>
                 <div class="col-xs-12 box-table">
                   <div class="col-xs-3">
-                    <b>Alamat</b>
+                    <b>Nama Ayah</b>
                   </div>
                   <div class="col-xs-9">
-                    Firefox 1.0
+                    {{$kbbl->nama_ayah}}
                   </div>
                 </div>
                 <div class="col-xs-12 box-table">
                   <div class="col-xs-3">
-                    <b>Kelurahan</b>
+                    <b>Nama Ibu</b>
                   </div>
                   <div class="col-xs-9">
-                    Win 98+ / OSX.2+
+                    {{$kbbl->nama_ibu}}
                   </div>
                 </div>
                 <div class="col-xs-12 box-table">
                   <div class="col-xs-3">
-                    <b>Kecamatan</b>
+                    <b>Tanggal Lahir</b>
                   </div>
                   <div class="col-xs-9">
-                    1.7
+                    {{$kbbl->ttl}}
                   </div>
                 </div>
                 <div class="col-xs-12 box-table">
                   <div class="col-xs-3">
-                    <b>Email</b>
+                    <b>Umur</b>
                   </div>
                   <div class="col-xs-9">
-                    A
+                    {{$kbbl->umur}}
                   </div>
                 </div>
                 <div class="col-xs-12 box-table">
                   <div class="col-xs-3">
-                    <b>Tanggal Bergabung</b>
+                    <b>Berat Badan</b>
                   </div>
                   <div class="col-xs-9">
-                    4
+                    {{$kbbl->berat_badan}}
+                  </div>
+                </div>
+                <div class="col-xs-12 box-table">
+                  <div class="col-xs-3">
+                    <b>Panjang Badan Lahir</b>
+                  </div>
+                  <div class="col-xs-9">
+                    {{$kbbl->panjang_badan}}
+                  </div>
+                </div>
+                <div class="col-xs-12 box-table">
+                  <div class="col-xs-3">
+                    <b>Tempat Lahir</b>
+                  </div>
+                  <div class="col-xs-9">
+                    {{$kbbl->tempat_lahir}}
+                  </div>
+                </div>
+                <div class="col-xs-12 box-table">
+                  <div class="col-xs-3">
+                    <b>Cara Persalinan</b>
+                  </div>
+                  <div class="col-xs-9">
+                    {{$kbbl->cara_persalinan}}
+                  </div>
+                </div>
+                <div class="col-xs-12 box-table">
+                  <div class="col-xs-3">
+                    <b>Kesimpulan KBBL</b>
+                  </div>
+                  <div class="col-xs-9">
+                    {{$kbbl->kesimpulan_kbbl}}
                   </div>
                 </div>
               </div>
@@ -136,55 +155,73 @@
       </div>
   </div>
 </div>
-
-<div class="modal fade" id="modal-edit">
+@endforeach -->
+<!-- =================================================================================================================== -->
+@foreach($kbbls as $kbbl)
+<div class="modal fade" id="modal-edit-{{$kbbl->id_kbbl}}">
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header green-background-main-color">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" align="center">Ubah Data Kader</h4>
+              <h4 class="modal-title" align="center">Ubah Data KBBL</h4>
           </div>
             <div class="modal-body">
+              {!! Form::open(['action' => ['KbblController@update', $kbbl->id_kbbl], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Nama Kader</label>
-                  <input type="text" class="form-control" id="nama">
+                  <label for="exampleInputEmail1">Nama Anak</label>
+                  <input type="text" class="form-control" name="nama_anak" value="{{$kbbl->nama_anak}}">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Nama Ayah</label>
+                  <input type="text" class="form-control" name="nama_ayah" value="{{$kbbl->nama_ayah}}">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Nama Ibu</label>
+                  <input type="text" class="form-control" name="nama_ibu" value="{{$kbbl->nama_ibu}}">
                 </div>
                    <div class="form-group">
-                  <label for="exampleInputEmail1">Alamat</label>
-                  <input type="textarea" class="form-control" id="alamat">
+                  <label for="exampleInputEmail1">Tanggal Lahir</label>
+                  <input type="textarea" class="form-control" name="ttl" value="{{$kbbl->ttl}}">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Kelurahan</label>
-                  <input type="text" class="form-control" id="kelurahan">
+                  <label for="exampleInputEmail1">Umur</label>
+                  <input type="text" class="form-control" name="umur" value="{{$kbbl->umur}}">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Kecamatan</label>
-                  <input type="text" class="form-control" id="kecamatan">
+                  <label for="exampleInputEmail1">Berat Badan Lahir</label>
+                  <input type="text" class="form-control" name="berat_badan" value="{{$kbbl->berat_badan}}">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email</label>
-                  <input type="text" class="form-control" id="email">
+                  <label for="exampleInputEmail1">Panjang Badan Lahir</label>
+                  <input type="text" class="form-control" name="panjang_badan" value="{{$kbbl->panjang_badan}}">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Tanggal Bergabung</label>
-                  <div class="input-group date">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <input type="text" class="form-control pull-right" id="tanggal" placeholder="01/20/2018">
-                  </div>
+                  <label for="exampleInputEmail1">Tempat Lahir</label>
+                  <input type="text" class="form-control" name="tempat_lahir" value="{{$kbbl->tempat_lahir}}">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Cara Persalinan</label>
+                  <input type="text" class="form-control" name="cara_persalinan" value="{{$kbbl->cara_persalinan}}">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Kesimpulan KBBL</label>
+                  <input type="text" class="form-control" name="kesimpulan_kbbl" value="{{$kbbl->kesimpulan_kbbl}}">
                 </div>
                 <div class="modal-footer">
-                <button type="submit" class="btn btn-info btn-fill pull-right">Simpan</button>
-                <div class="clearfix"></div>
-              </div>
+                {{Form::hidden('_method', 'PUT')}}
+                  <button type="submit" class="btn btn-info btn-fill pull-right">Simpan</button>
+                  <div class="clearfix"></div>
+                </div>
+              {!! Form::close() !!}
             </div>
       </div>
   </div>
 </div>
-
-<div class="modal fade" id="modal-hapus">
+@endforeach
+<!-- ====================================================================================================== -->
+@foreach($kbbls as $kbbl)
+<div class="modal fade" id="modal-hapus-{{$kbbl->id_kbbl}}">
   <div class="modal-dialog">
       <div class="modal-content">
 
@@ -195,12 +232,13 @@
         </div>
 
         <div class="modal-body">
-          <p>Apakah Anda yakin ingin menghapus Data Kader?</p>
+          <p>Apakah Anda yakin ingin menghapus Data "{{$kbbl->nama_anak}}"?</p>
         </div>
 
         <div class="modal-footer">
-          <form action="#" method="post">
+          <form action="/datakbbl/{{$kbbl->id_kbbl}}" method="post">
             <input type="submit" class="btn btn-danger" name="submit" value="YA">
+            {{ csrf_field() }}
             <input type="hidden" name="_method" value="DELETE">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Tidak</button>
           </form>
@@ -209,7 +247,8 @@
 
       </div>
   </div>
-</div>  -->
+</div> 
+@endforeach
 
 
 

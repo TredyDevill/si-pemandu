@@ -21,9 +21,6 @@
                   <th>Nama Ibu</th>
                   <th>Tanggal Lahir</th>
                   <th>Umur</th>
-                  <th>Sirup Besi FE I</th>
-                  <th>Sirup Besi FE II</th>
-                  <th>Oralit Blm</th>
                   <th>BCG</th>
                   <th>DPT I</th>
                   <th>DPT II</th>
@@ -36,186 +33,178 @@
                   <th>Hepatitis I</th>
                   <th>Hepatitis II</th>
                   <th>Hepatitis III</th>
-                  <th>Kesimpulan KBBL</th>
+                  <th>Kesimpulan Imunisasi</th>
                   <th> </th>
                 </tr>
                 </thead>
                 <tbody>
+                <?php
+                $i = 0;
+                ?>
+            @foreach($arrimun as $imunisasi)
                 <tr>
-                  <td>1</td>
-                  <td>Bro</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td>9</td>
-                  <td> 4</td>
-                  <td> 4</td>
-                  <td>Trident</td>
-                  <td>Bro</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td> 4</td>
-                  <td> 4</td>
-                  <td>Trident</td>
-                  <td>Bro</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td> 4</td>
-                  <td> 4</td>
-                  <td>Trident</td>
-                  <td> 4</td>
-                  <td>Trident</td>
-                  <td style="white-space: nowrap;" align="center"> 
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" data-target="#modal-lihat"><i class="fa fa-eye"></i></button>
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-success" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil-square-o"></i></button>
+                  <td>{{++$i}}</td>
+                  <td>{{ $imunisasi->nama_anak }}</td>
+                  <td>{{ $imunisasi->nama_ayah }}</td>
+                  <td>{{ $imunisasi->nama_ibu }}</td>
+                  <td>{{ $imunisasi->ttl }}</td>
+                  <td>{{ $imunisasi->umur }}</td>
+                  <td>{{ $imunisasi->bcg }}</td>
+                  <td>{{ $imunisasi->dpt_i }}</td>
+                  <td>{{ $imunisasi->dpt_ii }}</td>
+                  <td>{{ $imunisasi->dpt_iii }}</td>
+                  <td>{{ $imunisasi->polio_i }}</td>
+                  <td>{{ $imunisasi->polio_ii }}</td>
+                  <td>{{ $imunisasi->polio_iii }}</td>
+                  <td>{{ $imunisasi->polio_iv }}</td>
+                  <td>{{ $imunisasi->campak }}</td>
+                  <td>{{ $imunisasi->hepatitis_i }}</td>
+                  <td>{{ $imunisasi->hepatitis_ii }}</td>
+                  <td>{{ $imunisasi->hepatitis_iii }}</td>
+                  <td>{{ $imunisasi->kesimpulan_imunisasi }}</td>
+                  <td style="white-space: nowrap;" align="center">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-success" data-toggle="modal" data-target="#modal-edit-{{$imunisasi->id_anak}}"><i class="fa fa-pencil-square-o"></i></button>
                     <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#modal-hapus"><i class="fa fa-remove"></i></button>
                   </td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>superman</td>
-                  <td>super</td>
-                  <td>man</td>
-                  <td> 4</td>
-                  <td> 4</td>
-                  <td>8</td>
-                  <td>Trident</td>
-                  <td>Bro</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td> 4</td>
-                  <td> 4</td>
-                  <td>Trident</td>
-                  <td>Bro</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <td> 4</td>
-                  <td> 4</td>
-                  <td>Trident</td>
-                  <td> 4</td>
-                  <td>Trident</td>
-                  <td style="white-space: nowrap;" align="center"> 
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" data-target="#modal-lihat"><i class="fa fa-eye"></i></button>
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-success" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil-square-o"></i></button>
-                    <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#modal-hapus"><i class="fa fa-remove"></i></button>
-                  </td>
-                </tr>
+            @endforeach
                 </tbody>
               </table>
     </div>
 </div>
 
 
-
-<!-- <div class="modal fade" id="modal-lihat">
+@foreach($arrimun as $imunisasi)
+<div class="modal fade" id="modal-edit-{{$imunisasi->id_anak}}">
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header green-background-main-color">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" align="center">Lihat</h4>
-          </div>
-            <div class="modal-body overflow-hidden">
-              <div class="row">
-                <div class="col-xs-12 box-table">
-                  <div class="col-xs-3">
-                    <b>Nama Kader</b>
-                  </div>
-                  <div class="col-xs-9">
-                    Gecko
-                  </div>
-                </div>
-                <div class="col-xs-12 box-table">
-                  <div class="col-xs-3">
-                    <b>Alamat</b>
-                  </div>
-                  <div class="col-xs-9">
-                    Firefox 1.0
-                  </div>
-                </div>
-                <div class="col-xs-12 box-table">
-                  <div class="col-xs-3">
-                    <b>Kelurahan</b>
-                  </div>
-                  <div class="col-xs-9">
-                    Win 98+ / OSX.2+
-                  </div>
-                </div>
-                <div class="col-xs-12 box-table">
-                  <div class="col-xs-3">
-                    <b>Kecamatan</b>
-                  </div>
-                  <div class="col-xs-9">
-                    1.7
-                  </div>
-                </div>
-                <div class="col-xs-12 box-table">
-                  <div class="col-xs-3">
-                    <b>Email</b>
-                  </div>
-                  <div class="col-xs-9">
-                    A
-                  </div>
-                </div>
-                <div class="col-xs-12 box-table">
-                  <div class="col-xs-3">
-                    <b>Tanggal Bergabung</b>
-                  </div>
-                  <div class="col-xs-9">
-                    4
-                  </div>
-                </div>
-              </div>
-            </div>
-      </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modal-edit">
-  <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header green-background-main-color">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" align="center">Ubah Data Kader</h4>
+              <h4 class="modal-title" align="center">Ubah Data Imunisasi {{$imunisasi->nama_anak}}</h4>
           </div>
             <div class="modal-body">
+            {!! Form::open(['action' => ['ImunisasiController@update', $imunisasi->id_anak], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Nama Kader</label>
-                  <input type="text" class="form-control" id="nama">
-                </div>
-                   <div class="form-group">
-                  <label for="exampleInputEmail1">Alamat</label>
-                  <input type="textarea" class="form-control" id="alamat">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Kelurahan</label>
-                  <input type="text" class="form-control" id="kelurahan">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Kecamatan</label>
-                  <input type="text" class="form-control" id="kecamatan">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email</label>
-                  <input type="text" class="form-control" id="email">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Tanggal Bergabung</label>
+                  <label for="exampleInputEmail1">BCG</label>
                   <div class="input-group date">
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input type="text" class="form-control pull-right" id="tanggal" placeholder="01/20/2018">
+                      <input type="text" class="form-control pull-right" name="bcg" value="{{$imunisasi->bcg}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">DPT I</label>
+                  <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right" name="dpt_i" value="{{$imunisasi->dpt_i}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">DPT II</label>
+                  <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right" name="dpt_ii" value="{{$imunisasi->dpt_ii}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">DPT III</label>
+                  <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right" name="dpt_iii" value="{{$imunisasi->dpt_iii}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Polio I</label>
+                  <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right" name="polio_i" value="{{$imunisasi->polio_i}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Polio II</label>
+                  <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right" name="polio_ii" value="{{$imunisasi->polio_ii}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Polio III</label>
+                  <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right" name="polio_iii" value="{{$imunisasi->polio_iii}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Polio IV</label>
+                  <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right" name="polio_iv" value="{{$imunisasi->polio_iv}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Campak</label>
+                  <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right" name="campak" value="{{$imunisasi->campak}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Hepatitis I</label>
+                  <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right" name="hepatitis_i" value="{{$imunisasi->hepatitis_i}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Hepatitis II</label>
+                  <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right" name="hepatitis_ii" value="{{$imunisasi->hepatitis_ii}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Hepatitis III</label>
+                  <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right" name="hepatitis_iii" value="{{$imunisasi->hepatitis_iii}}">
                   </div>
                 </div>
                 <div class="modal-footer">
+                {{Form::hidden('_method', 'PUT')}}
                 <button type="submit" class="btn btn-info btn-fill pull-right">Simpan</button>
                 <div class="clearfix"></div>
               </div>
+            {!! Form::close() !!}
             </div>
       </div>
   </div>
 </div>
+@endforeach
+
 
 <div class="modal fade" id="modal-hapus">
   <div class="modal-dialog">
@@ -228,7 +217,7 @@
         </div>
 
         <div class="modal-body">
-          <p>Apakah Anda yakin ingin menghapus Data Kader?</p>
+          <p>Apakah Anda yakin ingin menghapus Data Imunisasi "{{$imunisasi->nama_anak}}"?</p>
         </div>
 
         <div class="modal-footer">
@@ -242,7 +231,7 @@
 
       </div>
   </div>
-</div>  -->
+</div> 
 
 
 
