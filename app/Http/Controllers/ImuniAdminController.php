@@ -2,33 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests;
 
-class LaporanBayiAdminController extends Controller
+class ImuniAdminController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('auth:admin');
     }
-
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-    	$namas = DB::table('kms')->distinct()->select('nama_anak')->get();
+        $namas = DB::table('imunisasis')->distinct()->select('nama_anak')->get();
         $arrimun = array();
         foreach($namas as $nama)
         {
-            $kmss = DB::select(DB::raw("SELECT DISTINCT
-                        (SELECT berat_badan FROM kbbls WHERE nama_anak = '" .$nama->nama_anak. "') as bbl,
-                        (SELECT bb FROM kms WHERE nama_anak = '" .$nama->nama_anak. "' AND bln_penimbangan = 'mei') as mei,
-                        (SELECT bb FROM kms WHERE nama_anak = '" .$nama->nama_anak. "' AND bln_penimbangan = 'juni') as juni,
-                        (SELECT tgl FROM vitas WHERE nama_anak = '" .$nama->nama_anak. "' AND nama_kapsul = 'Fe I') as sb_i,
-                        (SELECT tgl FROM vitas WHERE nama_anak = '" .$nama->nama_anak. "' AND nama_kapsul = 'Fe II') as sb_ii,
-                        (SELECT tgl FROM vitas WHERE nama_anak = '" .$nama->nama_anak. "' AND nama_kapsul = 'Vit A I') as vita_i,
-                        (SELECT tgl FROM vitas WHERE nama_anak = '" .$nama->nama_anak. "' AND nama_kapsul = 'Vit A II') as vita_ii,
-                        (SELECT tgl FROM vitas WHERE nama_anak = '" .$nama->nama_anak. "' AND nama_kapsul = 'Oralit') as oralit,
+            $imunisasis = DB::table('imunisasis')->selectRaw("DISTINCT id_anak,
                         (SELECT tgl FROM imunisasis WHERE nama_anak = '" .$nama->nama_anak. "' AND vaksin = 'BCG') as bcg,
                         (SELECT tgl FROM imunisasis WHERE nama_anak = '" .$nama->nama_anak. "' AND vaksin = 'DPT I') as dpt_i,
                         (SELECT tgl FROM imunisasis WHERE nama_anak = '" .$nama->nama_anak. "' AND vaksin = 'DPT II') as dpt_ii,
@@ -40,16 +41,13 @@ class LaporanBayiAdminController extends Controller
                         (SELECT tgl FROM imunisasis WHERE nama_anak = '" .$nama->nama_anak. "' AND vaksin = 'Campak') as campak,
                         (SELECT tgl FROM imunisasis WHERE nama_anak = '" .$nama->nama_anak. "' AND vaksin = 'Hepatitis I') as hepatitis_i,
                         (SELECT tgl FROM imunisasis WHERE nama_anak = '" .$nama->nama_anak. "' AND vaksin = 'Hepatitis II') as hepatitis_ii,
-                        (SELECT tgl FROM imunisasis WHERE nama_anak = '" .$nama->nama_anak. "' AND vaksin = 'Hepatitis III') as hepatitis_iii, nama_anak, nama_ayah, nama_ibu, ttl 
-                    FROM kms WHERE nama_anak = '" .$nama->nama_anak. "' AND status_anak = 'Bayi' "));
-            if($kmss != null)
-            {
-                foreach($kmss as $keluar)
-                {
-                    array_push($arrimun, $keluar);
-                }
-            }
+                        (SELECT tgl FROM imunisasis WHERE nama_anak = '" .$nama->nama_anak. "' AND vaksin = 'Hepatitis III') as hepatitis_iii, nama_anak, umur, nama_ayah, nama_ibu, kesimpulan_imunisasi, ttl")
+            ->where('nama_anak', $nama->nama_anak)
+            ->first();
+
+            array_push($arrimun, $imunisasis);    
         }
-        return view('vendor.adminlte.admin.laporanbayi', ['arrimun' => $arrimun]);
-    }
+        
+        return view('vendor.adminlte.admin.dataimunisasi', ['arrimun' => $arrimun]);
+     }
 }

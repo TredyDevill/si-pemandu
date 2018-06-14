@@ -57,13 +57,26 @@
 
               <li class="treeview">
               <a href="#">
+                <i class="fa fa-file-text"></i> <span>Data Kesehatan</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+                <ul class="treeview-menu">
+                  <li><a href="/admin/datakms"><i class="fa fa-circle-o"></i> Data KMS </a></li>
+                  <li><a href="/admin/datakbbl"><i class="fa fa-circle-o"></i> Data KBBL</a></li>
+                  <li><a href="/admin/dataimunisasi"><i class="fa fa-circle-o"></i> Data Imunisasi </a></li>
+                  <li><a href="/admin/datavitamin"><i class="fa fa-circle-o"></i> Data Pemberian Vitamin A</a></li>
+                  <li><a href="/admin/datakesehatananak"><i class="fa fa-circle-o"></i> Data Kesehatan Anak</a></li>
+                </ul>
+              </li>
+
+              <li class="treeview">
+              <a href="#">
                 <i class="fa fa-file"></i> <span>Laporan</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
                 <ul class="treeview-menu">
                   <li><a href="/admin/laporanbayi"><i class="fa fa-circle-o"></i> Laporan Bayi </a></li>
                   <li><a href="/admin/laporanbalita"><i class="fa fa-circle-o"></i> Laporan Balita</a></li>
                   <li><a href="/admin/pendaftaran"><i class="fa fa-circle-o"></i> Data Pendaftaran</a></li>
-                  <li><a href="#"><i class="fa fa-circle-o"></i> Data Sasaran </a></li>
+                  <li><a href="/admin/datasasaran"><i class="fa fa-circle-o"></i> Data Sasaran </a></li>
                 </ul>
               </li>
         </ul><!-- /.sidebar-menu -->

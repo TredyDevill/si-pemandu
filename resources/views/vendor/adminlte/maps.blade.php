@@ -41,10 +41,24 @@
 
 <script>
 var map;
+
 var kms = <?php print_r(json_encode($kmz)) ?>;
-// var gizi = document.getElementById("gb");
+var kmsgk = <?php print_r(json_encode($kmsk)) ?>;
+var kmsik = <?php print_r(json_encode($kmsbaik)) ?>;
+var kmsih = <?php print_r(json_encode($kmslebih)) ?>;
+var balitaburuk = <?php print_r(json_encode($kmsbalburuk)) ?>;
+var balitakurang = <?php print_r(json_encode($kmsbalkurang)) ?>;
+var balitabaik = <?php print_r(json_encode($kmsbalbaik)) ?>;
+var balitalebih = <?php print_r(json_encode($kmsballebih)) ?>;
 
 var markers =[];
+var markers2 =[];
+var markers3 =[];
+var markers4 =[];
+var markers5 =[];
+var markers6 =[];
+var markers7 =[];
+var markers8 =[];
 
 var layer_7;
 
@@ -454,23 +468,23 @@ function buruk(){
       var longitude = parseFloat(koordinat.split(',')[1]);
 
       var konten = '<div>' +
-                   '<p><b> Nama Anak : <b>' + nama +
-                   '<br><b> Nama Ayah : <b>' + ayah +
-                   '<br><b> Nama Ibu : <b>' + ibu +
-                   '<br><b> Tanggal Lahir : <b>' + lahir +
-                   '<br><b> Umur : <b>' + umur +
-                   '<br><b> Kelurahan : <b>' + lurah +
-                   '<br><b> RT/RW : <b>' + rt + '/' + rw +
-                   '<br><b> Berat Badan : <b>' + berat +
-                   '<br><b> Bulan Penimbangan : <b>' + timbang +
-                   '<br><b> Tinggi Badan : <b>' + tinggi +
-                   '<br><b> Jenis Kelamin : <b>' + jenis +
-                   '<br><b> Kesimpulan : <b>' + kesimpulan + '</p>' +
+                   '<p> Nama Anak : ' + nama +
+                   '<br> Nama Ayah : ' + ayah +
+                   '<br> Nama Ibu : ' + ibu +
+                   '<br> Tanggal Lahir : ' + lahir +
+                   '<br> Umur : ' + umur +
+                   '<br> Kelurahan : ' + lurah +
+                   '<br> RT/RW : ' + rt + '/' + rw +
+                   '<br> Berat Badan : ' + berat +
+                   '<br> Bulan Penimbangan : ' + timbang +
+                   '<br> Tinggi Badan : ' + tinggi +
+                   '<br> Jenis Kelamin : ' + jenis +
+                   '<br> Kesimpulan : <b>' +  kesimpulan  + '</b></p>' +
                    '</div>';
       var mark = new google.maps.Marker({
                   map: map,
                   position: {lat: latitude, lng: longitude},
-                  icon: "{{ asset('img/marker/pdam.png') }}"
+                  icon: "{{ asset('img/marker/indomaret.png') }}"
               });
       var infoWindow = new google.maps.InfoWindow({
           konten: konten,
@@ -484,6 +498,491 @@ function buruk(){
     }
     else{
         markers[i].setMap(null);
+    }
+  }
+}
+
+function kurang(){
+  var btn2 = document.getElementById("gk");
+  for(var i = 0; i < kmsgk.length; i++){
+    markers2[i] = addMarker(kmsgk[i]);
+  }
+  // console.log(markers[0]);
+  function addMarker(kmsgk){
+    if(btn2.checked){
+      var nama = kmsgk.nama_anak;
+      var ayah = kmsgk.nama_ayah;
+      var ibu = kmsgk.nama_ibu;
+      var lahir = kmsgk.ttl;
+      var umur = kmsgk.umur;
+      var lurah = kmsgk.kelurahan;
+      var rt = kmsgk.rt;
+      var rw = kmsgk.rw;
+      var berat = kmsgk.bb;
+      var timbang = kmsgk.bln_penimbangan;
+      var tinggi = kmsgk.tinggi;
+      var jenis = kmsgk.jenis_kelamin;
+      var kesimpulan = kmsgk.kesimpulan_kms;
+      var koordinat = kmsgk.kordinat;
+      var latitude = parseFloat(koordinat.split(',')[0]);
+      var longitude = parseFloat(koordinat.split(',')[1]);
+
+      var konten = '<div>' +
+                   '<p> Nama Anak : ' + nama +
+                   '<br> Nama Ayah : ' + ayah +
+                   '<br> Nama Ibu : ' + ibu +
+                   '<br> Tanggal Lahir : ' + lahir +
+                   '<br> Umur : ' + umur +
+                   '<br> Kelurahan : ' + lurah +
+                   '<br> RT/RW : ' + rt + '/' + rw +
+                   '<br> Berat Badan : ' + berat +
+                   '<br> Bulan Penimbangan : ' + timbang +
+                   '<br> Tinggi Badan : ' + tinggi +
+                   '<br> Jenis Kelamin : ' + jenis +
+                   '<br> Kesimpulan : <b>' +  kesimpulan  + '</b></p>' +
+                   '</div>';
+      var mark = new google.maps.Marker({
+                  map: map,
+                  position: {lat: latitude, lng: longitude},
+                  icon: "{{ asset('img/marker/wisata.png') }}"
+              });
+      var infoWindow = new google.maps.InfoWindow({
+          konten: konten,
+          maxWidth: 350
+        });
+      google.maps.event.addListener(mark, 'click', function(){
+          infoWindow.setContent(konten);
+          infoWindow.open(map, mark);
+        });
+      return mark;
+    }
+    else{
+        markers2[i].setMap(null);
+    }
+  }
+}
+
+function baik(){
+  var btn3 = document.getElementById("gbaik");
+  for(var i = 0; i < kmsik.length; i++){
+    markers3[i] = addMarker(kmsik[i]);
+  }
+  // console.log(markers[0]);
+  function addMarker(kmsik){
+    if(btn3.checked){
+      var nama = kmsik.nama_anak;
+      var ayah = kmsik.nama_ayah;
+      var ibu = kmsik.nama_ibu;
+      var lahir = kmsik.ttl;
+      var umur = kmsik.umur;
+      var lurah = kmsik.kelurahan;
+      var rt = kmsik.rt;
+      var rw = kmsik.rw;
+      var berat = kmsik.bb;
+      var timbang = kmsik.bln_penimbangan;
+      var tinggi = kmsik.tinggi;
+      var jenis = kmsik.jenis_kelamin;
+      var kesimpulan = kmsik.kesimpulan_kms;
+      var koordinat = kmsik.kordinat;
+      var latitude = parseFloat(koordinat.split(',')[0]);
+      var longitude = parseFloat(koordinat.split(',')[1]);
+
+      var konten = '<div>' +
+                   '<p> Nama Anak : ' + nama +
+                   '<br> Nama Ayah : ' + ayah +
+                   '<br> Nama Ibu : ' + ibu +
+                   '<br> Tanggal Lahir : ' + lahir +
+                   '<br> Umur : ' + umur +
+                   '<br> Kelurahan : ' + lurah +
+                   '<br> RT/RW : ' + rt + '/' + rw +
+                   '<br> Berat Badan : ' + berat +
+                   '<br> Bulan Penimbangan : ' + timbang +
+                   '<br> Tinggi Badan : ' + tinggi +
+                   '<br> Jenis Kelamin : ' + jenis +
+                   '<br> Kesimpulan : <b>' +  kesimpulan  + '</b></p>' +
+                   '</div>';
+      var mark = new google.maps.Marker({
+                  map: map,
+                  position: {lat: latitude, lng: longitude},
+                  icon: "{{ asset('img/marker/mall.png') }}"
+              });
+      var infoWindow = new google.maps.InfoWindow({
+          konten: konten,
+          maxWidth: 350
+        });
+      google.maps.event.addListener(mark, 'click', function(){
+          infoWindow.setContent(konten);
+          infoWindow.open(map, mark);
+        });
+      return mark;
+    }
+    else{
+        markers3[i].setMap(null);
+    }
+  }
+}
+
+function lebih(){
+  var btn4 = document.getElementById("gl");
+  for(var i = 0; i < kmsih.length; i++){
+    markers4[i] = addMarker(kmsih[i]);
+  }
+  // console.log(markers[0]);
+  function addMarker(kmsih){
+    if(btn4.checked){
+      var nama = kmsih.nama_anak;
+      var ayah = kmsih.nama_ayah;
+      var ibu = kmsih.nama_ibu;
+      var lahir = kmsih.ttl;
+      var umur = kmsih.umur;
+      var lurah = kmsih.kelurahan;
+      var rt = kmsih.rt;
+      var rw = kmsih.rw;
+      var berat = kmsih.bb;
+      var timbang = kmsih.bln_penimbangan;
+      var tinggi = kmsih.tinggi;
+      var jenis = kmsih.jenis_kelamin;
+      var kesimpulan = kmsih.kesimpulan_kms;
+      var koordinat = kmsih.kordinat;
+      var latitude = parseFloat(koordinat.split(',')[0]);
+      var longitude = parseFloat(koordinat.split(',')[1]);
+
+      var konten = '<div>' +
+                   '<p> Nama Anak : ' + nama +
+                   '<br> Nama Ayah : ' + ayah +
+                   '<br> Nama Ibu : ' + ibu +
+                   '<br> Tanggal Lahir : ' + lahir +
+                   '<br> Umur : ' + umur +
+                   '<br> Kelurahan : ' + lurah +
+                   '<br> RT/RW : ' + rt + '/' + rw +
+                   '<br> Berat Badan : ' + berat +
+                   '<br> Bulan Penimbangan : ' + timbang +
+                   '<br> Tinggi Badan : ' + tinggi +
+                   '<br> Jenis Kelamin : ' + jenis +
+                   '<br> Kesimpulan : <b>' +  kesimpulan  + '</b></p>' +
+                   '</div>';
+      var mark = new google.maps.Marker({
+                  map: map,
+                  position: {lat: latitude, lng: longitude},
+                  icon: "{{ asset('img/marker/puskesmas.png') }}"
+              });
+      var infoWindow = new google.maps.InfoWindow({
+          konten: konten,
+          maxWidth: 350
+        });
+      google.maps.event.addListener(mark, 'click', function(){
+          infoWindow.setContent(konten);
+          infoWindow.open(map, mark);
+        });
+      return mark;
+    }
+    else{
+        markers4[i].setMap(null);
+    }
+  }
+}
+
+function gizib(){
+  var btn5 = document.getElementById("gbb");
+  for(var i = 0; i < balitaburuk.length; i++){
+    markers5[i] = addMarker(balitaburuk[i]);
+  }
+  // console.log(markers[0]);
+  function addMarker(balitaburuk){
+    if(btn5.checked){
+      var nama = balitaburuk.nama_anak;
+      var ayah = balitaburuk.nama_ayah;
+      var ibu = balitaburuk.nama_ibu;
+      var lahir = balitaburuk.ttl;
+      var umur = balitaburuk.umur;
+      var lurah = balitaburuk.kelurahan;
+      var rt = balitaburuk.rt;
+      var rw = balitaburuk.rw;
+      var berat = balitaburuk.bb;
+      var timbang = balitaburuk.bln_penimbangan;
+      var tinggi = balitaburuk.tinggi;
+      var jenis = balitaburuk.jenis_kelamin;
+      var kesimpulan = balitaburuk.kesimpulan_kms;
+      var koordinat = balitaburuk.kordinat;
+      var latitude = parseFloat(koordinat.split(',')[0]);
+      var longitude = parseFloat(koordinat.split(',')[1]);
+
+      var konten = '<div>' +
+                   '<p> Nama Anak : ' + nama +
+                   '<br> Nama Ayah : ' + ayah +
+                   '<br> Nama Ibu : ' + ibu +
+                   '<br> Tanggal Lahir : ' + lahir +
+                   '<br> Umur : ' + umur +
+                   '<br> Kelurahan : ' + lurah +
+                   '<br> RT/RW : ' + rt + '/' + rw +
+                   '<br> Berat Badan : ' + berat +
+                   '<br> Bulan Penimbangan : ' + timbang +
+                   '<br> Tinggi Badan : ' + tinggi +
+                   '<br> Jenis Kelamin : ' + jenis +
+                   '<br> Kesimpulan : <b>' +  kesimpulan  + '</b></p>' +
+                   '</div>';
+      var mark = new google.maps.Marker({
+                  map: map,
+                  position: {lat: latitude, lng: longitude},
+                  icon: "{{ asset('img/marker/indomaret.png') }}"
+              });
+      var infoWindow = new google.maps.InfoWindow({
+          konten: konten,
+          maxWidth: 350
+        });
+      google.maps.event.addListener(mark, 'click', function(){
+          infoWindow.setContent(konten);
+          infoWindow.open(map, mark);
+        });
+      return mark;
+    }
+    else{
+        markers5[i].setMap(null);
+    }
+  }
+}
+
+function gizik(){
+  var btn6 = document.getElementById("gkb");
+  for(var i = 0; i < balitakurang.length; i++){
+    markers6[i] = addMarker(balitakurang[i]);
+  }
+  // console.log(markers[0]);
+  function addMarker(balitakurang){
+    if(btn6.checked){
+      var nama = balitakurang.nama_anak;
+      var ayah = balitakurang.nama_ayah;
+      var ibu = balitakurang.nama_ibu;
+      var lahir = balitakurang.ttl;
+      var umur = balitakurang.umur;
+      var lurah = balitakurang.kelurahan;
+      var rt = balitakurang.rt;
+      var rw = balitakurang.rw;
+      var berat = balitakurang.bb;
+      var timbang = balitakurang.bln_penimbangan;
+      var tinggi = balitakurang.tinggi;
+      var jenis = balitakurang.jenis_kelamin;
+      var kesimpulan = balitakurang.kesimpulan_kms;
+      var koordinat = balitakurang.kordinat;
+      var latitude = parseFloat(koordinat.split(',')[0]);
+      var longitude = parseFloat(koordinat.split(',')[1]);
+
+      var konten = '<div>' +
+                   '<p> Nama Anak : ' + nama +
+                   '<br> Nama Ayah : ' + ayah +
+                   '<br> Nama Ibu : ' + ibu +
+                   '<br> Tanggal Lahir : ' + lahir +
+                   '<br> Umur : ' + umur +
+                   '<br> Kelurahan : ' + lurah +
+                   '<br> RT/RW : ' + rt + '/' + rw +
+                   '<br> Berat Badan : ' + berat +
+                   '<br> Bulan Penimbangan : ' + timbang +
+                   '<br> Tinggi Badan : ' + tinggi +
+                   '<br> Jenis Kelamin : ' + jenis +
+                   '<br> Kesimpulan : <b>' +  kesimpulan  + '</b></p>' +
+                   '</div>';
+      var mark = new google.maps.Marker({
+                  map: map,
+                  position: {lat: latitude, lng: longitude},
+                  icon: "{{ asset('img/marker/wisata.png') }}"
+              });
+      var infoWindow = new google.maps.InfoWindow({
+          konten: konten,
+          maxWidth: 350
+        });
+      google.maps.event.addListener(mark, 'click', function(){
+          infoWindow.setContent(konten);
+          infoWindow.open(map, mark);
+        });
+      return mark;
+    }
+    else{
+        markers6[i].setMap(null);
+    }
+  }
+}
+
+function gizibaik(){
+  var btn7 = document.getElementById("gbaikb");
+  for(var i = 0; i < balitabaik.length; i++){
+    markers7[i] = addMarker(balitabaik[i]);
+  }
+  // console.log(markers[0]);
+  function addMarker(balitabaik){
+    if(btn7.checked){
+      var nama = balitabaik.nama_anak;
+      var ayah = balitabaik.nama_ayah;
+      var ibu = balitabaik.nama_ibu;
+      var lahir = balitabaik.ttl;
+      var umur = balitabaik.umur;
+      var lurah = balitabaik.kelurahan;
+      var rt = balitabaik.rt;
+      var rw = balitabaik.rw;
+      var berat = balitabaik.bb;
+      var timbang = balitabaik.bln_penimbangan;
+      var tinggi = balitabaik.tinggi;
+      var jenis = balitabaik.jenis_kelamin;
+      var kesimpulan = balitabaik.kesimpulan_kms;
+      var koordinat = balitabaik.kordinat;
+      var latitude = parseFloat(koordinat.split(',')[0]);
+      var longitude = parseFloat(koordinat.split(',')[1]);
+
+      var konten = '<div>' +
+                   '<p> Nama Anak : ' + nama +
+                   '<br> Nama Ayah : ' + ayah +
+                   '<br> Nama Ibu : ' + ibu +
+                   '<br> Tanggal Lahir : ' + lahir +
+                   '<br> Umur : ' + umur +
+                   '<br> Kelurahan : ' + lurah +
+                   '<br> RT/RW : ' + rt + '/' + rw +
+                   '<br> Berat Badan : ' + berat +
+                   '<br> Bulan Penimbangan : ' + timbang +
+                   '<br> Tinggi Badan : ' + tinggi +
+                   '<br> Jenis Kelamin : ' + jenis +
+                   '<br> Kesimpulan : <b>' +  kesimpulan  + '</b></p>' +
+                   '</div>';
+      var mark = new google.maps.Marker({
+                  map: map,
+                  position: {lat: latitude, lng: longitude},
+                  icon: "{{ asset('img/marker/mall.png') }}"
+              });
+      var infoWindow = new google.maps.InfoWindow({
+          konten: konten,
+          maxWidth: 350
+        });
+      google.maps.event.addListener(mark, 'click', function(){
+          infoWindow.setContent(konten);
+          infoWindow.open(map, mark);
+        });
+      return mark;
+    }
+    else{
+        markers7[i].setMap(null);
+    }
+  }
+}
+
+function gizil(){
+  var btn8 = document.getElementById("glb");
+  for(var i = 0; i < balitalebih.length; i++){
+    markers8[i] = addMarker(balitalebih[i]);
+  }
+  // console.log(markers[0]);
+  function addMarker(balitalebih){
+    if(btn8.checked){
+      var nama = balitalebih.nama_anak;
+      var ayah = balitalebih.nama_ayah;
+      var ibu = balitalebih.nama_ibu;
+      var lahir = balitalebih.ttl;
+      var umur = balitalebih.umur;
+      var lurah = balitalebih.kelurahan;
+      var rt = balitalebih.rt;
+      var rw = balitalebih.rw;
+      var berat = balitalebih.bb;
+      var timbang = balitalebih.bln_penimbangan;
+      var tinggi = balitalebih.tinggi;
+      var jenis = balitalebih.jenis_kelamin;
+      var kesimpulan = balitalebih.kesimpulan_kms;
+      var koordinat = balitalebih.kordinat;
+      var latitude = parseFloat(koordinat.split(',')[0]);
+      var longitude = parseFloat(koordinat.split(',')[1]);
+
+      var konten = '<div>' +
+                   '<p> Nama Anak : ' + nama +
+                   '<br> Nama Ayah : ' + ayah +
+                   '<br> Nama Ibu : ' + ibu +
+                   '<br> Tanggal Lahir : ' + lahir +
+                   '<br> Umur : ' + umur +
+                   '<br> Kelurahan : ' + lurah +
+                   '<br> RT/RW : ' + rt + '/' + rw +
+                   '<br> Berat Badan : ' + berat +
+                   '<br> Bulan Penimbangan : ' + timbang +
+                   '<br> Tinggi Badan : ' + tinggi +
+                   '<br> Jenis Kelamin : ' + jenis +
+                   '<br> Kesimpulan : <b>' +  kesimpulan  + '</b></p>' +
+                   '</div>';
+      var mark = new google.maps.Marker({
+                  map: map,
+                  position: {lat: latitude, lng: longitude},
+                  icon: "{{ asset('img/marker/puskesmas.png') }}"
+              });
+      var infoWindow = new google.maps.InfoWindow({
+          konten: konten,
+          maxWidth: 350
+        });
+      google.maps.event.addListener(mark, 'click', function(){
+          infoWindow.setContent(konten);
+          infoWindow.open(map, mark);
+        });
+      return mark;
+    }
+    else{
+        markers8[i].setMap(null);
+    }
+  }
+}
+
+function hapus(){
+  var gizi = document.getElementById("gb");
+  var btn2 = document.getElementById("gk");
+  var btn3 = document.getElementById("gbaik");
+  var btn4 = document.getElementById("gl");
+  var btn5 = document.getElementById("gbb");
+  var btn6 = document.getElementById("gkb");
+  var btn7 = document.getElementById("gbaikb");
+  var btn8 = document.getElementById("glb");
+    if(gizi.checked){
+      for(var i = 0; i < kms.length; i++){
+        gizi.checked = false;
+      markers[i].setMap(null);
+    }
+  }
+  if(btn2.checked){
+      for(var i = 0; i < kmsgk.length; i++){
+        btn2.checked = false;
+      markers2[i].setMap(null);
+    }
+  }
+
+    if(btn3.checked){
+      for(var i = 0; i < kmsik.length; i++){
+        btn3.checked = false;
+      markers3[i].setMap(null);
+    }
+  }
+
+    if(btn4.checked){
+      for(var i = 0; i < kmsih.length; i++){
+        btn4.checked = false;
+      markers4[i].setMap(null);
+    }
+  }
+
+    if(btn5.checked){
+      for(var i = 0; i < balitaburuk.length; i++){
+        btn5.checked = false;
+      markers5[i].setMap(null);
+    }
+  }
+
+    if(btn6.checked){
+      for(var i = 0; i < balitakurang.length; i++){
+        btn6.checked = false;
+      markers6[i].setMap(null);
+    }
+  }
+
+    if(btn7.checked){
+      for(var i = 0; i < balitabaik.length; i++){
+        btn7.checked = false;
+      markers7[i].setMap(null);
+    }
+  }
+
+    if(btn8.checked){
+      for(var i = 0; i < balitalebih.length; i++){
+        btn8.checked = false;
+      markers8[i].setMap(null);
     }
   }
 }

@@ -11,6 +11,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -163,35 +164,73 @@ $(document).ready(function() {
     } );
 } );
 </script>
-
+@if(Route::currentRouteName() == 'admin.dashboard')
 <script type="text/javascript">
-$(function(){
-    var color = Chart.helpers.color;
-        var sehatChartData = {
-            labels: ["Januari", "Februari", "Maret", "April"],
-             datasets: [{
-                label: 'Balita',
-                backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                borderColor: window.chartColors.red,
-                borderWidth: 1,
-                data: [13, 20, 27, 30]
-             }, {
-                label: 'Bayi',
-                backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                borderColor: window.chartColors.green,
-                borderWidth: 1,
-                data: [9, 11, 17, 25]
-                }]
-             };
+new Chart(document.getElementById("pie-chart"), {
+    type: 'pie',
+    data: {
+      labels: ["Bayi", "Balita"],
+      datasets: [{
+        label: "Total",
+        backgroundColor: ["#3e95cd", "#B22222"],
+        data: <?php echo json_encode($totaljml); ?>
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Total Bayi & Balita'
+      }
+    }
+});
 
-            $('#canvassehat').SiPemanduCharts({
-                type        : 'bar',
-                chartData   : sehatChartData,
-                titleText   : 'Kesehatan Balita & Bayi',
-                ketId       : 'sehat'
-            });
+new Chart(document.getElementById("bar-chart-grouped"), {
+    type: 'bar',
+    data: {
+      labels: ["Gizi Buruk", "Gizi Kurang", "Gizi Baik", "Gizi Lebih"],
+      datasets: [
+        {
+          label: "Bayi",
+          backgroundColor: "#3e95cd",
+          data: <?php echo json_encode($gizijml); ?>
+        }, {
+          label: "Balita",
+          backgroundColor: "#B22222",
+          data: <?php echo json_encode($gizibalitajml); ?>
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Status Gizi Bayi dan Balita  '
+      }
+    }
+});
 
-        });
+new Chart(document.getElementById("bar2-chart-grouped"), {
+    type: 'bar',
+    data: {
+      labels: ["Sangat Kurus", "Kurus", "Normal", "Gemuk"],
+      datasets: [
+        {
+          label: "Bayi",
+          backgroundColor: "#3e95cd",
+          data: [5, 6, 7, 3, 0]
+        }, {
+          label: "Balita",
+          backgroundColor: "#B22222",
+          data: [3, 6, 11, 7, 0]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Tingkat Berat Badan Bayi dan Balita'
+      }
+    }
+});
 
 </script>
 <script>
@@ -204,5 +243,5 @@ function dropdown() {
     }
 }
 </script>
-
+@endif
 </html>

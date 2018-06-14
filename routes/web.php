@@ -19,12 +19,19 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('grafik');
   Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-    Route::get('/', 'AdminController@index')->name('admin.dashboard');
+    Route::get('/', 'AdminController@index')->middleware('auth:admin')->name('admin.dashboard');
     Route::get('/maps', 'MapsAdminController@index');
-    Route::get('/laporanbayi', 'LaporanBayiAdminController@index');
-    Route::get('/laporanbalita', 'LaporanBalitaAdminController@index');
+    // Route::get('/laporanbayi', 'LaporanBayiAdminController@index');
+    Route::resource('/laporanbayi', 'LaporanBayiAdminController');
+    // Route::get('/laporanbalita', 'LaporanBalitaAdminController@index');
+    Route::resource('laporanbalita', 'LaporanBalitaAdminController');
     Route::get('/pendaftaran', 'DaftarAdminController@index');
     Route::resource('petugas', 'AdmPetugasController');
+    Route::get('/datasasaran', 'SasaranAdminController@index');
+    Route::get('/datakms', 'KmsAdminController@index');
+    Route::get('/datakbbl', 'KbblAdminController@index');
+    Route::get('/dataimunisasi', 'ImuniAdminController@index');
+    Route::get('/datavitamin', 'VitAdminController@index');
   });
 
 Route::get('/maps', 'MapsController@index');
