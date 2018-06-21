@@ -116,29 +116,29 @@
 									</p>
 									<div class="progress-group">
 										<span class="progress-text">Total Keseluruhan</span>
-										<span class="progress-number"><b>48</b></span>
+										<span class="progress-number"><b>{{$totaljml[0] + $totaljml[1]}}</b></span>
 									</div>
 								</div>
 								<div class="col-md-4 bg-white-active box-keterangan">
 									<div class="progress-group">
 										<span class="progress-text">Sangat Kurus</span>
-										<span class="progress-number" style="background-color: #B22222"><b>3</b></span>
-										<span class="progress-number" style="background-color: #3e95cd"><b>5</b></span>
+										<span class="progress-number" style="background-color: #B22222"><b>{{$tingkatbalitajml[0]}}</b></span>
+										<span class="progress-number" style="background-color: #3e95cd"><b>{{$tingkatbayijml[0]}}</b></span>
 									</div>
 									<div class="progress-group">
 										<span class="progress-text">Kurus</span>
-										<span class="progress-number" style="background-color: #B22222"><b>6</b></span>
-										<span class="progress-number" style="background-color: #3e95cd"><b>6</b></span>
+										<span class="progress-number" style="background-color: #B22222"><b>{{$tingkatbalitajml[1]}}</b></span>
+										<span class="progress-number" style="background-color: #3e95cd"><b>{{$tingkatbayijml[1]}}</b></span>
 									</div>
 									<div class="progress-group">
 										<span class="progress-text">Normal</span>
-										<span class="progress-number" style="background-color: #B22222"><b>11</b></span>
-										<span class="progress-number" style="background-color: #3e95cd"><b>7</b></span>
+										<span class="progress-number" style="background-color: #B22222"><b>{{$tingkatbalitajml[2]}}</b></span>
+										<span class="progress-number" style="background-color: #3e95cd"><b>{{$tingkatbayijml[2]}}</b></span>
 									</div>
 									<div class="progress-group">
 										<span class="progress-text">Gemuk</span>
-										<span class="progress-number" style="background-color: #B22222"><b>7</b></span>
-										<span class="progress-number" style="background-color: #3e95cd"><b>3</b></span>
+										<span class="progress-number" style="background-color: #B22222"><b>{{$tingkatbalitajml[3]}}</b></span>
+										<span class="progress-number" style="background-color: #3e95cd"><b>{{$tingkatbayijml[3]}}</b></span>
 									</div>
 								</div>
 

@@ -53,3 +53,6 @@ Route::resource('/dataimunisasi', 'ImunisasiController');
 Route::resource('/datavitamina', 'VitaminController');
 Route::get('/datakesehatananak', 'KesehatanController@index');
 Route::get('/kmeans', 'HomeController@jsphp');
+Route::post('/kmeans-post', 'HomeController@postjsphp');
+Route::get('/kmeansbalita', 'HomeController@jsphpbalita');
+Route::post('/kmeansbalita-post', 'HomeController@postjsphpbalita');

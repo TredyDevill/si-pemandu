@@ -18,7 +18,7 @@
 			console.log(clusterc4.length);
 			e.preventDefault();
 			var request = $.ajax({
-				url : '/kmeans-post',
+				url : '/kmeansbalita-post',
 				headers: {
 				  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 				  },
@@ -43,8 +43,8 @@
 	});
 </script>
 <script type="text/javascript">
-	var jmlh = <?php print_r(json_encode($kmz)) ?>;
-	var total = <?php print_r(json_encode($kmzbayi)) ?>;
+	var jmlh = <?php print_r(json_encode($kmzbalita)) ?>;
+	var total = <?php print_r(json_encode($kmzzbalita)) ?>;
 
 	// console.log(total);
 	var data = [];
@@ -70,10 +70,10 @@
 	var hasil4 = [[]];
 	var total4 = [[]];
 
-	var c1 = [13, 85];
-	var c2 = [10, 82];
-	var c3 = [8, 79];
-	var c4 = [5, 55];
+	var c1 = [24, 101];
+	var c2 = [18, 106];
+	var c3 = [13, 81];
+	var c4 = [10, 79];
 
 	var clusterc1 = [];
 	var clusterc2 = [];
