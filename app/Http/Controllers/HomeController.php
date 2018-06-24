@@ -11,7 +11,6 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use App\Totalanak;
 
 /**
  * Class HomeController
@@ -43,30 +42,6 @@ class HomeController extends Controller
         $totaljml = array();
         array_push($totaljml, $total->bayi, $total->balita);
 
-        // $banyak = DB::table('kms')->count();
-        // for($i = 1; $i <= $banyak; $i++)
-        // {
-        //     if(rand(0,3) == 0)
-        //     {
-        //         $acak = 'Buruk';
-        //     }
-        //     else if(rand(0,3) == 1)
-        //     {
-        //         $acak = 'Kurang';
-        //     }
-        //     else if(rand(0,3) == 2)
-        //     {
-        //         $acak = 'Baik';
-        //     }
-        //     else
-        //     {
-        //         $acak = 'Lebih';
-        //     }
-        //     DB::table('kms')->where('id_kms', $i + 22)
-        //     ->update([
-        //     'kesimpulan_kms' => 'Gizi '.$acak
-        //     ]);    
-        // }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         $gizibayi = DB::table('kms')->selectRaw("DISTINCT (SELECT COALESCE(COUNT(kesimpulan_kms), 0) FROM kms WHERE kesimpulan_kms = 'Gizi Buruk' AND status_anak = 'Bayi' AND id_kms IN (SELECT MAX(id_kms) as maks FROM kms GROUP BY id_anak)) as buruk,
             (SELECT COALESCE(COUNT(kesimpulan_kms), 0) FROM kms WHERE kesimpulan_kms = 'Gizi Kurang' AND status_anak = 'Bayi' AND id_kms IN (SELECT MAX(id_kms) as maks FROM kms GROUP BY id_anak)) as kurang, 
@@ -138,9 +113,9 @@ class HomeController extends Controller
 
         $st = "Status";
         $st1 = "Status 1";
-        $st1 = "Status 2";
-        $st1 = "Status 3";
-        $st1 = "Status 4";
+        $st2 = "Status 2";
+        $st3 = "Status 3";
+        $st4 = "Status 4";
 
         $nilai1 = $request->input('varn1');
         $nilai2 = $request->input('varn2');
@@ -223,9 +198,9 @@ class HomeController extends Controller
 
         $st = "Status";
         $st1 = "Status 1";
-        $st1 = "Status 2";
-        $st1 = "Status 3";
-        $st1 = "Status 4";
+        $st2 = "Status 2";
+        $st3 = "Status 3";
+        $st4 = "Status 4";
 
         $nilai1 = $request->input('varn1');
         $nilai2 = $request->input('varn2');

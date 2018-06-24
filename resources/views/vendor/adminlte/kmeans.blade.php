@@ -70,10 +70,10 @@
 	var hasil4 = [[]];
 	var total4 = [[]];
 
-	var c1 = [13, 85];
-	var c2 = [10, 82];
-	var c3 = [8, 79];
-	var c4 = [5, 55];
+	var c1 = [11, 83];//Gemuk
+	var c2 = [10, 79];//Normal
+	var c3 = [9, 70];//Kurus
+	var c4 = [5, 65];//Sangat Kurus
 
 	var clusterc1 = [];
 	var clusterc2 = [];
