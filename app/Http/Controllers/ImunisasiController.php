@@ -89,4 +89,9 @@ class ImunisasiController extends Controller
         
         return redirect('/dataimunisasi')->with('success', 'Data imunisasi berhasil diubah');
     }
+    public function destroy($id_anak)
+    {
+        $imun = DB::table('imunisasis')->where('id_anak', $id_anak)->delete();
+    return redirect('/dataimunisasi')->with('delete', 'Data imunisasi berhasil dihapus');
+    }
 }

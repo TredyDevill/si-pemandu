@@ -10,7 +10,7 @@
 	<div class="col-xs-12">
           <!-- Bar chart -->
         <div class="box box-primary">
-            <div class="box-header with-border bg-light-blue" style="padding: 15px">
+            <div class="box-header with-border" style="padding: 15px">
               <h3 class="box-title">Bayi Dan Balita</h3>
 
               <div class="box-tools pull-right">

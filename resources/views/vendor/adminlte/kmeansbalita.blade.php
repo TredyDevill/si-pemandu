@@ -117,19 +117,27 @@
 		clusterc4 = [];
 		//karena kita pake fungsi push(), jadi tiap pengulangan harus dikosongin lagi arraynya
 	//fungsi push buat nambah array, jadi kalo ga dikosongin lagi, arraynya bakal nambah terus setiap pengulangan
+		jarakc1=[];
+	    jarakc2=[];
+	    jarakc3=[];
+	    jarakc4=[];
 
 		for(var a=0; a<data.length; a++){
 			if(total1[a]<total2[a] && total1[a]<total3[a] && total1[a]<total4[a]){//membandingkan
 				clusterc1.push(data[a]);
+				jarakc1.push(total1[a]);
 			}
 			else if(total2[a]<total3[a] && total2[a]<total4[a]){
 				clusterc2.push(data[a]);
+				jarakc2.push(total2[a]);
 			}
 			else if(total3[a]<total4[a]){
 				clusterc3.push(data[a]);
+				jarakc3.push(total3[a]);
 			}
 			else{
 				clusterc4.push(data[a]);
+				jarakc4.push(total4[a]);
 			};
 		}
 
@@ -226,6 +234,10 @@
 	}
 	return hasil;
 	}
+	console.log(jarakc1);
+	console.log(jarakc2);
+	console.log(jarakc3);
+	console.log(jarakc4);
 	console.log(totalss(clusterc1));
 	console.log(clusterc1);
 	console.log(totalss(clusterc2));

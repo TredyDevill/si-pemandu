@@ -32,6 +32,7 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('grafik');
     Route::get('/datakbbl', 'KbblAdminController@index');
     Route::get('/dataimunisasi', 'ImuniAdminController@index');
     Route::get('/datavitamin', 'VitAdminController@index');
+    Route::get('/datakesehatananak', 'KesAdminController@index');
   });
 
 Route::get('/maps', 'MapsController@index');
@@ -51,7 +52,8 @@ Route::get('/datagizi', 'GiziController@index');
 Route::resource('/dataimunisasi', 'ImunisasiController');
 // Route::get('/datavitamina', 'VitaminController@index');
 Route::resource('/datavitamina', 'VitaminController');
-Route::get('/datakesehatananak', 'KesehatanController@index');
+// Route::get('/datakesehatananak', 'KesehatanController@index');
+Route::resource('/datakesehatananak', 'KesehatanController');
 Route::get('/kmeans', 'HomeController@jsphp');
 Route::post('/kmeans-post', 'HomeController@postjsphp');
 Route::get('/kmeansbalita', 'HomeController@jsphpbalita');

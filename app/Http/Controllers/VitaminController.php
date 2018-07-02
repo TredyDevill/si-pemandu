@@ -66,4 +66,10 @@ class VitaminController extends Controller
         
         return redirect('/datavitamina')->with('success', 'Data vitamin berhasil diubah');
     }
+
+    public function destroy($id_anak)
+    {
+        $vit = DB::table('vitas')->where('id_anak', $id_anak)->delete();
+    return redirect('/datavitamina')->with('delete', 'Data vitamin berhasil dihapus');
+    }
 }

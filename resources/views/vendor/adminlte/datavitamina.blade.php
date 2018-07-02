@@ -52,7 +52,7 @@
                   <td>{{ $vit->kesimpulan_vita }}</td>
                   <td style="white-space: nowrap;" align="center">
                     <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-success" data-toggle="modal" data-target="#modal-edit-{{$vit->id_anak}}"><i class="fa fa-pencil-square-o"></i></button>
-                    <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#modal-hapus"><i class="fa fa-remove"></i></button>
+                    <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#modal-hapus-{{$vit->id_anak}}"><i class="fa fa-remove"></i></button>
                   </td>
                 </tr>
             @endforeach
@@ -138,7 +138,8 @@
 </div>
 @endforeach
 
-<div class="modal fade" id="modal-hapus">
+@foreach($arrimun as $vit)
+<div class="modal fade" id="modal-hapus-{{$vit->id_anak}}">
   <div class="modal-dialog">
       <div class="modal-content">
 
@@ -149,12 +150,13 @@
         </div>
 
         <div class="modal-body">
-          <p>Apakah Anda yakin ingin menghapus Data Vitamin?</p>
+          <p>Apakah Anda yakin ingin menghapus Data Vitamin "{{$vit->nama_anak}}" ?</p>
         </div>
 
         <div class="modal-footer">
-          <form action="#" method="post">
+          <form action="/datavitamina/{{$vit->id_anak}}" method="post">
             <input type="submit" class="btn btn-danger" name="submit" value="YA">
+            {{ csrf_field() }}
             <input type="hidden" name="_method" value="DELETE">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Tidak</button>
           </form>
@@ -164,7 +166,7 @@
       </div>
   </div>
 </div>
-
+@endforeach
 
 
 
