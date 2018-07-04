@@ -28,8 +28,6 @@
                   <td>{{ $user->email }}</td>
                   <td>{{ $user->password }}</td>
                   <td style="white-space: nowrap;" align="center"> 
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" data-target="#modal-lihat-{{$user->id}}"><i class="fa fa-eye"></i></button>
-
                     <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-success" data-toggle="modal" data-target="#modal-edit-{{$user->id}}"><i class="fa fa-pencil-square-o"></i></button>
 
                     <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#modal-hapus-{{$user->id}}"><i class="fa fa-remove"></i></button>
@@ -41,40 +39,6 @@
     </div>
 </div>                
 
-{{--==========================================================================================================================--}}       @foreach($users as $user)          
-                  <div class="modal fade" id="modal-lihat-{{$user->id}}">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header green-background-main-color">
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" align="center">Lihat Data Admin Posyandy</h4>
-                            </div>
-                              <div class="modal-body overflow-hidden">
-                                <div class="row">
-                                  <div class="col-xs-12 box-table">
-                                    <div class="col-xs-5">
-                                      <b>Nama Admin Posyandu</b>
-                                    </div>
-                                    <div class="col-xs-7">
-                                      {{ $user->name }}
-                                    </div>
-                                  </div>
-                                  <div class="col-xs-12 box-table">
-                                    <div class="col-xs-5">
-                                      <b>Email</b>
-                                    </div>
-                                    <div class="col-xs-7">
-                                      {{ $user->email }}
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                        </div>
-                    </div>
-                  </div>
-           @endforeach                     
-{{--==========================================================================================================================--}}
 @foreach($users as $user)          
                   <div class="modal fade" id="modal-edit-{{$user->id}}">
                     <div class="modal-dialog">
@@ -182,8 +146,7 @@
                 </form> -->
 
 <!-- Tambah Petugas -->
-<section class="content">
-      <!-- SELECT2 EXAMPLE -->
+<!-- <section class="content">
       <div class="box box-default">
         <div class="box-header with-border">
           <h3 class="box-title">Tambah Admin Posyandu</h3>
@@ -193,7 +156,6 @@
             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
           </div>
         </div>
-        <!-- /.box-header -->
         <div class="box-body">
         {!! Form::open(['action' => 'AdmPetugasController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
           <div class="row">
@@ -204,16 +166,13 @@
                   <input type="text" class="form-control" name="name">
                 </div>
               </div>
-              <!-- /.form-group -->
               <div class="form-group">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email</label>
                   <input type="text" class="form-control" name="email">
                 </div>
               </div>
-              <!-- /.form-group -->
             </div>
-            <!-- /.col -->
             <div class="col-md-6">
               <div class="form-group">
                 <div class="form-group">
@@ -221,25 +180,20 @@
                   <input type="text" class="form-control" name="alamat">
                 </div>
               </div>
-              <!-- /.form-group -->
               <div class="form-group">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Password</label>
                   <input type="password" class="form-control" name="password">
                 </div>
               </div>
-              <!-- /.form-group -->
             </div>
-            <!-- /.col -->
           </div>
           <div class="box-footer">
             <center><input type="submit" class="btn btn-primary" value="Tambah"></center>
           </div>
-          <!-- /.row -->
           {!! Form::close() !!}
         </div>
-        <!-- /.box-body -->
       </div>
-</section>
+</section> -->
 
 @endsection

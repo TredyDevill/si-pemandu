@@ -20,22 +20,22 @@ class AdmPetugasController extends Controller
         return view('vendor.adminlte.admin.petugas', ['users' => $users]);
     }
 
-    public function store(Request $request)
-    {
-        $this->validate($request,[
-            'name'    =>  'required',
-            'email'      =>  'required',
-            'password'      =>  'required'
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $this->validate($request,[
+    //         'name'    =>  'required',
+    //         'email'      =>  'required',
+    //         'password'      =>  'required'
+    //     ]);
 
-        DB::table('users')->insert([
-            'name'    =>  $request->name,
-            'email'      =>  $request->email,
-            'password'      =>  $request->password
-        ]);
+    //     DB::table('users')->insert([
+    //         'name'    =>  $request->name,
+    //         'email'      =>  $request->email,
+    //         'password'      =>  $request->password
+    //     ]);
 
-        return redirect('/admin/petugas');
-    }
+    //     return redirect('/admin/petugas');
+    // }
     public function update(Request $request, $id)
     {
         $this->validate($request, [

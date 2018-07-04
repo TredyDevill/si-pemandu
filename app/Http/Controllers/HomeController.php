@@ -158,6 +158,7 @@ class HomeController extends Controller
 
         for($c1 = 0; $c1 < count($clstr); $c1++){
             DB::table('kms')
+            ->where('status_anak', '=', 'Bayi')
             ->where('bb', $clstr[$c1][0])
             ->where('tinggi', $clstr[$c1][1])
             ->update(['status_kmeans' => ${"st".($cluster+1)}]);
@@ -243,6 +244,7 @@ class HomeController extends Controller
 
         for($c1 = 0; $c1 < count($clstr); $c1++){
             DB::table('kms')
+            ->where('status_anak', '=', 'Balita')
             ->where('bb', $clstr[$c1][0])
             ->where('tinggi', $clstr[$c1][1])
             ->update(['status_kmeans' => ${"st".($cluster+1)}]);

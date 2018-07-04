@@ -72,8 +72,8 @@
 
 	var c1 = [11, 83];//Gemuk
 	var c2 = [10, 79];//Normal
-	var c3 = [9, 70];//Kurus
-	var c4 = [5, 65];//Sangat Kurus
+	var c3 = [8, 70];//Kurus
+	var c4 = [6, 65];//Sangat Kurus
 
 	var clusterc1 = [];
 	var clusterc2 = [];
@@ -234,6 +234,10 @@
 	}
 	return hasil;
 	}
+	console.log(c11);
+	console.log(c22);
+	console.log(c33);
+	console.log(c44);
 	console.log(jarakc1);
 	console.log(jarakc2);
 	console.log(jarakc3);

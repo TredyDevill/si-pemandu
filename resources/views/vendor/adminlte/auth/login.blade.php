@@ -43,6 +43,7 @@
                             <input type="checkbox" name="remember"> {{ trans('adminlte_lang::message.remember') }}
                         </label>
                     </div>
+                    <label>Belum Terdaftar?<a href="/register"> Register </a> </label>
                     <label>Anda Admin Pusat?<a href="/admin"> Login</a> </label>
                 </div><!-- /.col -->
                 <div class="col-xs-4">

@@ -70,10 +70,10 @@
 	var hasil4 = [[]];
 	var total4 = [[]];
 
-	var c1 = [24, 101];
-	var c2 = [18, 106];
-	var c3 = [13, 81];
-	var c4 = [10, 79];
+	var c1 = [24, 101];//Gemuk
+	var c2 = [18, 105];//Normal
+	var c3 = [13, 81];//Kurus
+	var c4 = [10, 79];//Sangat Kurus
 
 	var clusterc1 = [];
 	var clusterc2 = [];
@@ -234,6 +234,10 @@
 	}
 	return hasil;
 	}
+	console.log(c11);
+	console.log(c22);
+	console.log(c33);
+	console.log(c44);
 	console.log(jarakc1);
 	console.log(jarakc2);
 	console.log(jarakc3);

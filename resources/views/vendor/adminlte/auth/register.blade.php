@@ -64,8 +64,8 @@
                         </div><!-- /.col -->
                     </div>
                 </form>
-
-                <a href="{{ url('/login') }}" class="text-center">{{ trans('adminlte_lang::message.membreship') }}</a>
+                <label>Punya Akun?<a href="{{ url('/login') }}"> Masuk </a> </label>
+                <!-- <a href="{{ url('/login') }}" class="text-center">{{ trans('adminlte_lang::message.membreship') }}</a> -->
             </div><!-- /.form-box -->
         </div><!-- /.register-box -->
     </div>
