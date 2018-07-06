@@ -117,43 +117,47 @@ class HomeController extends Controller
         $st3 = "Status 3";
         $st4 = "Status 4";
 
-        $nilai1 = $request->input('varn1');
-        $nilai2 = $request->input('varn2');
-        $nilai3 = $request->input('varn3');
-        $nilai4 = $request->input('varn4');
+        // $nilai1 = $request->input('varn1');
+        // $nilai2 = $request->input('varn2');
+        // $nilai3 = $request->input('varn3');
+        // $nilai4 = $request->input('varn4');
 
-        $nilaicluster = [$nilai1, $nilai2, $nilai3, $nilai4];
-        rsort($nilaicluster);
+        // $nilaicluster = [$nilai1, $nilai2, $nilai3, $nilai4];
+        // rsort($nilaicluster);
 
-        for($i = 0; $i < 4; $i++)
-        {
-            if($nilaicluster[0] == ${"nilai".($i + 1)})
-            {
-                ${"st".($i + 1)} = "Gemuk";
-            }
-            else if($nilaicluster[1] == ${"nilai".($i + 1)}){
-                ${"st".($i + 1)} = "Normal";
-            }
-            else if($nilaicluster[2] == ${"nilai".($i + 1)}){
-                ${"st".($i + 1)} = "Kurus";
-            }
-            else{
-                ${"st".($i + 1)} = "Sangat Kurus";
-            }
-        }
+        // for($i = 0; $i < 4; $i++)
+        // {
+        //     if($nilaicluster[0] == ${"nilai".($i + 1)})
+        //     {
+        //         ${"st".($i + 1)} = "Gemuk";
+        //     }
+        //     else if($nilaicluster[1] == ${"nilai".($i + 1)}){
+        //         ${"st".($i + 1)} = "Normal";
+        //     }
+        //     else if($nilaicluster[2] == ${"nilai".($i + 1)}){
+        //         ${"st".($i + 1)} = "Kurus";
+        //     }
+        //     else{
+        //         ${"st".($i + 1)} = "Sangat Kurus";
+        //     }
+        // }
 
         for($cluster = 0; $cluster < 4; $cluster++){
             if($cluster == 0){
                 $clstr = $request->input('varc1');
+                ${"st".($cluster + 1)} = "Gemuk";
             }
             if($cluster == 1){
                 $clstr = $request->input('varc2');
+                ${"st".($cluster + 1)} = "Normal";
             }
             if($cluster == 2){
                 $clstr = $request->input('varc3');
+                ${"st".($cluster + 1)} = "Kurus";
             }
             if($cluster == 3){
                 $clstr = $request->input('varc4');
+                ${"st".($cluster + 1)} = "Sangat Kurus";
             }
 
         for($c1 = 0; $c1 < count($clstr); $c1++){
@@ -203,43 +207,47 @@ class HomeController extends Controller
         $st3 = "Status 3";
         $st4 = "Status 4";
 
-        $nilai1 = $request->input('varn1');
-        $nilai2 = $request->input('varn2');
-        $nilai3 = $request->input('varn3');
-        $nilai4 = $request->input('varn4');
+        // $nilai1 = $request->input('varn1');
+        // $nilai2 = $request->input('varn2');
+        // $nilai3 = $request->input('varn3');
+        // $nilai4 = $request->input('varn4');
 
-        $nilaicluster = [$nilai1, $nilai2, $nilai3, $nilai4];
-        rsort($nilaicluster);
+        // $nilaicluster = [$nilai1, $nilai2, $nilai3, $nilai4];
+        // rsort($nilaicluster);
 
-        for($i = 0; $i < 4; $i++)
-        {
-            if($nilaicluster[0] == ${"nilai".($i + 1)})
-            {
-                ${"st".($i + 1)} = "Gemuk";
-            }
-            else if($nilaicluster[1] == ${"nilai".($i + 1)}){
-                ${"st".($i + 1)} = "Normal";
-            }
-            else if($nilaicluster[2] == ${"nilai".($i + 1)}){
-                ${"st".($i + 1)} = "Kurus";
-            }
-            else{
-                ${"st".($i + 1)} = "Sangat Kurus";
-            }
-        }
+        // for($i = 0; $i < 4; $i++)
+        // {
+        //     if($nilaicluster[0] == ${"nilai".($i + 1)})
+        //     {
+        //         ${"st".($i + 1)} = "Gemuk";
+        //     }
+        //     else if($nilaicluster[1] == ${"nilai".($i + 1)}){
+        //         ${"st".($i + 1)} = "Normal";
+        //     }
+        //     else if($nilaicluster[2] == ${"nilai".($i + 1)}){
+        //         ${"st".($i + 1)} = "Kurus";
+        //     }
+        //     else{
+        //         ${"st".($i + 1)} = "Sangat Kurus";
+        //     }
+        // }
 
         for($cluster = 0; $cluster < 4; $cluster++){
             if($cluster == 0){
                 $clstr = $request->input('varc1');
+                ${"st".($cluster + 1)} = "Gemuk";
             }
             if($cluster == 1){
                 $clstr = $request->input('varc2');
+                ${"st".($cluster + 1)} = "Normal";
             }
             if($cluster == 2){
                 $clstr = $request->input('varc3');
+                ${"st".($cluster + 1)} = "Kurus";
             }
             if($cluster == 3){
                 $clstr = $request->input('varc4');
+                ${"st".($cluster + 1)} = "Sangat Kurus";
             }
 
         for($c1 = 0; $c1 < count($clstr); $c1++){

@@ -27,11 +27,11 @@
 					varc1: clusterc1,
 					varc2: clusterc2,
 					varc3: clusterc3,
-					varc4: clusterc4,
-					varn1: totalss(clusterc1),
-					varn2: totalss(clusterc2),
-					varn3: totalss(clusterc3),
-					varn4: totalss(clusterc4)
+					varc4: clusterc4
+					// varn1: totalss(clusterc1),
+					// varn2: totalss(clusterc2),
+					// varn3: totalss(clusterc3),
+					// varn4: totalss(clusterc4)
 				
 				}),
 			contentType:"application/json; charset=utf-8",
@@ -49,13 +49,17 @@
 	// console.log(total);
 	var data = [];
 	var loop = [];
-
 	for(var i = 0; i<jmlh; i++)
 	{
 		var array = $.map(total[i], function(value, index){
 			return [value];
 		});
 		data.push(array);
+	}
+	for(var i = 0; i<jmlh; i++)
+	{
+		data[i][0] = (data[i][1]/data[i][0])*(data[i][1]/120);
+		data[i][1] = data[i][1]/120;
 	}
 	// console.log(data);
 	var hasil1 = [[]];
@@ -70,10 +74,10 @@
 	var hasil4 = [[]];
 	var total4 = [[]];
 
-	var c1 = [24, 101];//Gemuk
-	var c2 = [18, 105];//Normal
-	var c3 = [13, 81];//Kurus
-	var c4 = [10, 79];//Sangat Kurus
+	var c1 = [3.99, 1];//Gemuk
+	var c2 = [5.36, 1];//Normal
+	var c3 = [6.45, 1];//Kurus
+	var c4 = [7.02, 1];//Sangat Kurus
 
 	var clusterc1 = [];
 	var clusterc2 = [];
@@ -210,7 +214,7 @@
 
 	hasilakhir();
 	// var stop = 0;
-	while(arraysEqual(c1, c11) == false && arraysEqual(c2, c22) == false && arraysEqual(c3, c33) == false && arraysEqual(c4, c44) == false){
+	while(arraysEqual(c1, c11) == false || arraysEqual(c2, c22) == false || arraysEqual(c3, c33) == false || arraysEqual(c4, c44) == false){
 		c1 = c11;
 		c2 = c22;
 		c3 = c33;
@@ -221,9 +225,9 @@
 		// 	break;
 		// }
 		// stop++;
-		if(arraysEqual(c1, c11) == true && arraysEqual(c2, c22) == true && arraysEqual(c3, c33) == true && arraysEqual(c4, c44) == true){
-			console.log("selesai");
-		}
+		// if(arraysEqual(c1, c11) == true && arraysEqual(c2, c22) == true && arraysEqual(c3, c33) == true && arraysEqual(c4, c44) == true){
+		// 	console.log("selesai");
+		// }
 	}
 	function totalss(clstr)
 	{
@@ -234,21 +238,45 @@
 	}
 	return hasil;
 	}
-	console.log(c11);
-	console.log(c22);
-	console.log(c33);
-	console.log(c44);
+	for(var cc1 = 0;cc1 < clusterc1.length;cc1++)
+	{
+		clusterc1[cc1][1] = Math.round(clusterc1[cc1][1]*120);
+		clusterc1[cc1][0] = Math.round(clusterc1[cc1][1]/(clusterc1[cc1][0]*(120/clusterc1[cc1][1])));
+		
+	}
+	for(var cc2 = 0;cc2 < clusterc2.length;cc2++)
+	{
+		clusterc2[cc2][1] = Math.round(clusterc2[cc2][1]*120);
+		clusterc2[cc2][0] = Math.round(clusterc2[cc2][1]/(clusterc2[cc2][0]*(120/clusterc2[cc2][1])));
+		
+	}
+	for(var cc3 = 0;cc3 < clusterc3.length;cc3++)
+	{
+		clusterc3[cc3][1] = Math.round(clusterc3[cc3][1]*120);
+		clusterc3[cc3][0] = Math.round(clusterc3[cc3][1]/(clusterc3[cc3][0]*(120/clusterc3[cc3][1])));
+		
+	}
+	for(var cc4 = 0;cc4 < clusterc4.length;cc4++)
+	{
+		clusterc4[cc4][1] = Math.round(clusterc4[cc4][1]*120);
+		clusterc4[cc4][0] = Math.round(clusterc4[cc4][1]/(clusterc4[cc4][0]*(120/clusterc4[cc4][1])));
+		
+	}
+	// console.log(c11);
+	// console.log(c22);
+	// console.log(c33);
+	// console.log(c44);
 	console.log(jarakc1);
 	console.log(jarakc2);
 	console.log(jarakc3);
 	console.log(jarakc4);
-	console.log(totalss(clusterc1));
+	// console.log(totalss(clusterc1));
 	console.log(clusterc1);
-	console.log(totalss(clusterc2));
+	// console.log(totalss(clusterc2));
 	console.log(clusterc2);
-	console.log(totalss(clusterc3));
+	// console.log(totalss(clusterc3));
 	console.log(clusterc3);
-	console.log(totalss(clusterc4));
+	// console.log(totalss(clusterc4));
 	console.log(clusterc4);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
