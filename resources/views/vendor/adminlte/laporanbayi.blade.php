@@ -23,11 +23,8 @@
                   <th>Nama Ibu</th>
                   <th>Penimbangan Mei</th>
                   <th>Penimbangan Juni</th>
-                  <th>Sirup Besi FE I Bln</th>
-                  <th>Sirup Besi FE II Bln</th>
                   <th>VIT.A I Bln</th>
                   <th>VIT.A II Bln</th>
-                  <th>Oralit Bln</th>
                   <th>BCG</th>
                   <th>DPT I</th>
                   <th>DPT II</th>
@@ -56,11 +53,8 @@
                   <td>{{ $lap->nama_ibu }}</td>
                   <td>{{ $lap->mei }}</td>
                   <td>{{ $lap->juni }}</td>
-                  <td>{{ $lap->sb_i }}</td>
-                  <td>{{ $lap->sb_ii }}</td>
                   <td>{{ $lap->vita_i }}</td>
                   <td>{{ $lap->vita_ii }}</td>
-                  <td>{{ $lap->oralit }}</td>
                   <td>{{ $lap->bcg }}</td>
                   <td>{{ $lap->dpt_i }}</td>
                   <td>{{ $lap->dpt_ii }}</td>

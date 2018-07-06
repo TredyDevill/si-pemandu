@@ -70,6 +70,22 @@ class AdminController extends Controller
         $gizibalitajml = array();
         array_push($gizibalitajml, $gizibalita->buruk, $gizibalita->kurang, $gizibalita->baik, $gizibalita->lebih, 0);
 
-        return view('vendor.adminlte.admin.admin', ['totaljml' => $totaljml, 'gizijml' => $gizijml, 'gizibalitajml' => $gizibalitajml]);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        $kmeansbayi = DB::table('kms')->selectRaw("DISTINCT (SELECT COALESCE(COUNT(status_kmeans), 0) FROM kms WHERE status_kmeans = 'Sangat Kurus' AND status_anak = 'Bayi' AND id_kms IN (SELECT MAX(id_kms) as maks FROM kms GROUP BY id_anak)) as sangat_kurus,
+            (SELECT COALESCE(COUNT(status_kmeans), 0) FROM kms WHERE status_kmeans = 'Kurus' AND status_anak = 'Bayi' AND id_kms IN (SELECT MAX(id_kms) as maks FROM kms GROUP BY id_anak)) as kurus, 
+            (SELECT COALESCE(COUNT(status_kmeans), 0) FROM kms WHERE status_kmeans = 'Normal' AND status_anak = 'Bayi' AND id_kms IN (SELECT MAX(id_kms) as maks FROM kms GROUP BY id_anak)) as normal, 
+            (SELECT COALESCE(COUNT(status_kmeans), 0) FROM kms WHERE status_kmeans = 'Gemuk' AND status_anak = 'Bayi' AND id_kms IN (SELECT MAX(id_kms) as maks FROM kms GROUP BY id_anak)) as gemuk")->first();
+        $tingkatbayijml = array();
+        array_push($tingkatbayijml, $kmeansbayi->sangat_kurus, $kmeansbayi->kurus, $kmeansbayi->normal, $kmeansbayi->gemuk, 0);
+       
+        $kmeansbalita = DB::table('kms')->selectRaw("DISTINCT (SELECT COALESCE(COUNT(status_kmeans), 0) FROM kms WHERE status_kmeans = 'Sangat Kurus' AND status_anak = 'Balita' AND id_kms IN (SELECT MAX(id_kms) as maks FROM kms GROUP BY id_anak)) as sangat_kurus,
+            (SELECT COALESCE(COUNT(status_kmeans), 0) FROM kms WHERE status_kmeans = 'Kurus' AND status_anak = 'Balita' AND id_kms IN (SELECT MAX(id_kms) as maks FROM kms GROUP BY id_anak)) as kurus, 
+            (SELECT COALESCE(COUNT(status_kmeans), 0) FROM kms WHERE status_kmeans = 'Normal' AND status_anak = 'Balita' AND id_kms IN (SELECT MAX(id_kms) as maks FROM kms GROUP BY id_anak)) as normal, 
+            (SELECT COALESCE(COUNT(status_kmeans), 0) FROM kms WHERE status_kmeans = 'Gemuk' AND status_anak = 'Balita' AND id_kms IN (SELECT MAX(id_kms) as maks FROM kms GROUP BY id_anak)) as gemuk")->first();
+        $tingkatbalitajml = array();
+        array_push($tingkatbalitajml, $kmeansbalita->sangat_kurus, $kmeansbalita->kurus, $kmeansbalita->normal, $kmeansbalita->gemuk, 0);
+
+        return view('vendor.adminlte.admin.admin', ['totaljml' => $totaljml, 'gizijml' => $gizijml, 'gizibalitajml' => $gizibalitajml, 'tingkatbayijml' => $tingkatbayijml, 'tingkatbalitajml' => $tingkatbalitajml]);
     }
 }

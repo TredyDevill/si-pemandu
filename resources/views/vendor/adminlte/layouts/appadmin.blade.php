@@ -216,18 +216,18 @@ new Chart(document.getElementById("bar2-chart-grouped"), {
         {
           label: "Bayi",
           backgroundColor: "#3e95cd",
-          data: [5, 6, 7, 3, 0]
+          data: <?php echo json_encode($tingkatbayijml); ?>
         }, {
           label: "Balita",
           backgroundColor: "#B22222",
-          data: [3, 6, 11, 7, 0]
+          data: <?php echo json_encode($tingkatbalitajml); ?>
         }
       ]
     },
     options: {
       title: {
         display: true,
-        text: 'Tingkat Berat Badan Bayi dan Balita'
+        text: 'Tingkat Berat Badan Bayi dan Balita Berdasarkan K-Means'
       }
     }
 });

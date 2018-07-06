@@ -26,12 +26,8 @@ class VitaminController extends Controller
         foreach($namas as $nama)
         {
             $vitas = DB::table('vitas')->selectRaw("DISTINCT id_anak,
-                        (SELECT tgl FROM vitas WHERE nama_anak = '" .$nama->nama_anak. "' AND nama_kapsul = 'Fe I') as sb_i,
-                        (SELECT tgl FROM vitas WHERE nama_anak = '" .$nama->nama_anak. "' AND nama_kapsul = 'Fe II') as sb_ii,
-                        (SELECT tgl FROM vitas WHERE nama_anak = '" .$nama->nama_anak. "' AND nama_kapsul = 'Vit A I') as vita_i,
-                        (SELECT tgl FROM vitas WHERE nama_anak = '" .$nama->nama_anak. "' AND nama_kapsul = 'Vit A II') as vita_ii,
-                        (SELECT tgl FROM vitas WHERE nama_anak = '" .$nama->nama_anak. "' AND nama_kapsul = 'PMT Pemutihan') as pmt,
-                        (SELECT tgl FROM vitas WHERE nama_anak = '" .$nama->nama_anak. "' AND nama_kapsul = 'Oralit') as oralit, nama_anak, umur, nama_ayah, nama_ibu, kesimpulan_vita, ttl")
+                        (SELECT tgl FROM vitas WHERE nama_anak = '" .$nama->nama_anak. "' AND nama_kapsul = 'kapsul biru') as vita_i,
+                        (SELECT tgl FROM vitas WHERE nama_anak = '" .$nama->nama_anak. "' AND nama_kapsul = 'kapsul merah') as vita_ii, nama_anak, umur, nama_ayah, nama_ibu, kesimpulan_vita, ttl")
             ->where('nama_anak', $nama->nama_anak)
             ->first();
 
@@ -45,28 +41,15 @@ class VitaminController extends Controller
     {
 
         DB::table('vitas')->where('id_anak', $id_anak)
-        ->where('nama_kapsul', 'Fe I')
-        ->update(['tgl' => $request->sb_i]);
-        DB::table('vitas')->where('id_anak', $id_anak)
-        ->where('nama_kapsul', 'Fe I')
-        ->update(['tgl' => $request->sb_ii]);
-        DB::table('vitas')->where('id_anak', $id_anak)
-        ->where('nama_kapsul', 'Vit A I')
+        ->where('nama_kapsul', 'kapsul biru')
         ->update(['tgl' => $request->vita_i]);
         DB::table('vitas')->where('id_anak', $id_anak)
-        ->where('nama_kapsul', 'Vit A II')
+        ->where('nama_kapsul', 'kapsul merah')
         ->update(['tgl' => $request->vita_ii]);
-        DB::table('vitas')->where('id_anak', $id_anak)
-        ->where('nama_kapsul', 'PMT')
-        ->update(['tgl' => $request->pmt]);
-        DB::table('vitas')->where('id_anak', $id_anak)
-        ->where('nama_kapsul', 'Oralit')
-        ->update(['tgl' => $request->oralit]);
         
         
         return redirect('/datavitamina')->with('success', 'Data vitamin berhasil diubah');
     }
-
     public function destroy($id_anak)
     {
         $vit = DB::table('vitas')->where('id_anak', $id_anak)->delete();

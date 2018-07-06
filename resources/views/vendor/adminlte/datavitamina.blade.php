@@ -1,7 +1,7 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-	{{ trans('adminlte_lang::message.home') }}
+  {{ trans('adminlte_lang::message.home') }}
 @endsection
 
 @section('main-content')
@@ -12,7 +12,7 @@
     </div>
             <!-- /.box-header -->
     <div class="box-body" >
-    	<table id="example" class="display nowrap" style="width:100%">
+      <table id="example" class="display nowrap" style="width:100%">
                 <thead>
                 <tr>
                   <th> No. </th>
@@ -21,12 +21,8 @@
                   <th>Nama Ibu</th>
                   <th>Tanggal lahir</th>
                   <th>Umur</th>
-                  <th>SB Fe I</th>
-                  <th>SB Fe II</th>
                   <th>Vitamin A I</th>
                   <th>Vitamin A II</th>
-                  <th>PMT Pemutihan</th>
-                  <th>Oralit</th>
                   <th>Kesimpulan Vitamin</th>
                   <th> </th>
                 </tr>
@@ -43,12 +39,8 @@
                   <td>{{ $vit->nama_ibu }}</td>
                   <td>{{ $vit->ttl }}</td>
                   <td>{{ $vit->umur }}</td>
-                  <td>{{ $vit->sb_i }}</td>
-                  <td>{{ $vit->sb_ii }}</td>
                   <td>{{ $vit->vita_i }}</td>
                   <td>{{ $vit->vita_ii }}</td>
-                  <td>{{ $vit->pmt }}</td>
-                  <td>{{ $vit->oralit }}</td>
                   <td>{{ $vit->kesimpulan_vita }}</td>
                   <td style="white-space: nowrap;" align="center">
                     <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-success" data-toggle="modal" data-target="#modal-edit-{{$vit->id_anak}}"><i class="fa fa-pencil-square-o"></i></button>
@@ -73,24 +65,6 @@
             <div class="modal-body">
             {!! Form::open(['action' => ['VitaminController@update', $vit->id_anak], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Sirup Besi Fe I</label>
-                  <div class="input-group date">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <input type="text" class="form-control pull-right" name="sb_i" value="{{ $vit->sb_i }}">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Sirup Besi Fe II</label>
-                  <div class="input-group date">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <input type="text" class="form-control pull-right" name="sb_ii" value="{{ $vit->sb_ii }}">
-                  </div>
-                </div>
-                <div class="form-group">
                   <label for="exampleInputEmail1">VItamin A I</label>
                   <div class="input-group date">
                       <div class="input-group-addon">
@@ -106,24 +80,6 @@
                         <i class="fa fa-calendar"></i>
                       </div>
                       <input type="text" class="form-control pull-right" name="vita_ii" value="{{ $vit->vita_ii }}">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">PMT</label>
-                  <div class="input-group date">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <input type="text" class="form-control pull-right" name="pmt" value="{{ $vit->pmt }}">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Oralit</label>
-                  <div class="input-group date">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <input type="text" class="form-control pull-right" name="oralit" value="{{ $vit->oralit }}">
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -167,6 +123,7 @@
   </div>
 </div>
 @endforeach
+
 
 
 

@@ -22,12 +22,8 @@
                   <th>Nama Ibu</th>
                   <th>Penimbangan Mei</th>
                   <th>Penimbangan Juni</th>
-                  <th>Sirup Besi FE I Bln</th>
-                  <th>Sirup Besi FE II Bln</th>
                   <th>VIT.A I Bln</th>
                   <th>VIT.A II Bln</th>
-                  <th>PMT Pemulihan</th>
-                  <th>Oralit</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,12 +39,8 @@
                   <td>{{ $lapbal->nama_ibu }}</td>
                   <td>{{ $lapbal->mei }}</td>
                   <td>{{ $lapbal->juni }}</td>
-                  <td>{{ $lapbal->sb_i }}</td>
-                  <td>{{ $lapbal->sb_ii }}</td>
                   <td>{{ $lapbal->vita_i }}</td>
                   <td>{{ $lapbal->vita_ii }}</td>
-                  <td>{{ $lapbal->pmt }}</td>
-                  <td>{{ $lapbal->oralit }}</td>
                 </tr>
             @endforeach
                 </tbody>
